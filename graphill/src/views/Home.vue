@@ -1,12 +1,11 @@
 <template>
-  <div>
-    hello
+  <div class="text-center">
+    This is the Homepage
   </div>
 </template>
 
 <script>
 export default {
   name: 'HomeView',
-
 }
 </script>
