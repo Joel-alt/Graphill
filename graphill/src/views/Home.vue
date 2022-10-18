@@ -1,7 +1,6 @@
 <template>
   <BaseHeader/>
-    <div class="min-h-screen bg-bodyBlue">
-      <slot />
+    <div class="bg-bodyBlue h-full">
     </div>
   <BaseFooter/>
 </template>
