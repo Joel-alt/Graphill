@@ -1,8 +1,13 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const bodyParser = require("body-parser");
+const cors = require('cors');
 
-app.get('/', function(req, res){
-   res.send("Hello world!");
-});
+const illustrationRoutes = require("./routes/illustrationRoutes");
 
-app.listen(3000);
+const app = express();
+
+app.use(cors());
+app.use(bodyParser.json());
+app.use("/illustrations", illustrationRoutes);
+
+app.listen(3300);
