@@ -1,3 +1,3 @@
 # Graphill
 
-Projet Web Efrei Paris
+Projet Web M1 SE1 Efrei Paris
