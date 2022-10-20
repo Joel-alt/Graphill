@@ -7,7 +7,7 @@
       <p class="text-center flex-1 text-7xl font-semibold italic">Graphill</p>
       <ul class="flex flex-1 flex-wrap">
         <li class="flex flex-1 justify-end">
-          <router-link to="/" class="mr-4 md:mr-6 text-2xl font-semibold">Nous rejoindre</router-link>
+          <router-link to="/login" class="mr-4 md:mr-6 text-2xl font-semibold">Se connecter</router-link>
         </li>
       </ul>
     </div>

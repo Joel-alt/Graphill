@@ -1,6 +1,6 @@
 <template>
-  <BaseHeader />
-  <div class="bg-bodyBlue h-full">
+  <BaseHeader/>
+  <div class="bg-bodyBlue flex flex-1 justify-center p-16 ">
     <LoginForm/>
   </div>
   <BaseFooter/>
