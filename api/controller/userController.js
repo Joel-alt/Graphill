@@ -6,8 +6,8 @@ const {addUser} = require("../repository/userRepository");
 async function login(req, res) {
     const username = req.body.username;
     const password = req.body.password;
-    const result = await userRepository.userExist(username, password);
-    if(result[0].length !== 1) {
+    const result = await userRepository.userExist(username);
+    if(result[0].length === 0) {
         return res.status(401).json({ error: 'User does not exist !' });
     }
     bcrypt.compare(password, result[0][0].password)
@@ -27,8 +27,8 @@ async function login(req, res) {
 async function signUp(req, res) {
     const username = req.body.username;
     const password = req.body.password;
-    const result = await userRepository.userExist(username, password);
-    if(result[0].length === 1) {
+    const result = await userRepository.userExist(username);
+    if(result[0].length > 0) {
         return res.status(401).json({ error: 'User already exist !' });
     }
     const CryptedPassword = await bcrypt.hash(password, 10)
