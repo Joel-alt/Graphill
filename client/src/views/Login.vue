@@ -1,7 +1,8 @@
 <template>
   <div class="flex flex-col h-screen">
     <BaseHeader/>
-      <div class="bg-bodyBlue grow">
+      <div class="bg-bodyBlue p-16 grow">
+        <LoginForm/>
       </div>
     <BaseFooter/>
   </div>
@@ -10,9 +11,11 @@
 <script>
 import BaseHeader from '@/components/global/BaseHeader.vue'
 import BaseFooter from '@/components/global/BaseFooter.vue'
+import LoginForm from "@/components/loginPage/LoginForm.vue";
 export default {
-  name: 'HomeView',
+  name: 'Login',
   components: {
+    LoginForm,
     BaseHeader,
     BaseFooter,
   },
