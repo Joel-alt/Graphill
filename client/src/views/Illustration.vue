@@ -1,11 +1,10 @@
 <template>
   <BaseHeader />
   <div>
-    Header - remove scroll bar - fix image sizing - hover effect zoom
     <div class="w-full flex snap-y md:snap-x overflow-auto justify-center md:justify-start p-7" id="gallery">
       <div class="flex md:flex-row flex-col gap-16">
         <span v-for="card in items" :key="card" class="snap-center self-center">
-          <Card :url=card.url :likes=card.likes />
+          <Card :url=card.url :likes.sync=card.likes :id=card.id />
         </span>
       </div>
     </div>
@@ -26,7 +25,7 @@ export default {
   },
   data() {
     return {
-      items: []
+      items: [],
     }
   },
   methods: {
