@@ -22,17 +22,18 @@ const likeIllustration = async (id, userID) => {
     return await promisePool.query(query);
 }
 
-const hasLiked = async (id) => {
+const hasLiked = async (userID) => {
     const pool = utility.pool;
     const query = `SELECT DISTINCT workOfArt.id, likes FROM likelist
                    RIGHT JOIN workOfArt ON workOfArt.id = likelist.workOfArtID
-                   WHERE userID = ${id};`;
+                   WHERE userID = ${userID};`;
     const promisePool = pool.promise();
     return await promisePool.query(query);
 }
 
 const createLikeList = async (id, userID) => {
     const pool = utility.pool;
+    console.log(id, userID);
     const query = `INSERT INTO likelist (userID, workOfArtID) VALUES (${userID}, ${id})`;
     const promisePool = pool.promise();
     return await promisePool.query(query);
