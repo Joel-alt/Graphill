@@ -1,6 +1,7 @@
 <template>
+  <div class="flex flex-col h-screen">
   <BaseHeader />
-  <div>
+  <div class="bg-bodyBlue grow">
     <div class="w-full flex snap-y md:snap-x overflow-auto justify-center flex-col md:justify-start p-7" id="gallery">
       <div>
         <div v-if="statusPrice">
@@ -18,6 +19,8 @@
     </div>
   </div>
   <BaseFooter />
+  </div>
+
 </template>
 
 <script>
