@@ -1,9 +1,11 @@
 <template>
-  <BaseHeader/>
-  <div class="bg-bodyBlue flex flex-1 justify-center p-16 ">
-    <LoginForm/>
+  <div class="flex flex-col h-screen">
+    <BaseHeader/>
+      <div class="bg-bodyBlue p-16 grow">
+        <LoginForm/>
+      </div>
+    <BaseFooter/>
   </div>
-  <BaseFooter/>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-gradient-to-b from-headerBlue to-bodyBlue mt-auto">
+  <header class="bg-gradient-to-b from-headerBlue to-bodyBlue">
     <div class="flex items-center flex-col sm:flex-row">
       <router-link to="/" class="flex flex-1 ">
         <img src="../../assets/logo_graphill_noir.png" class="h-24 w-64 ml-4 mt-4" alt="Graphill Logo"/>

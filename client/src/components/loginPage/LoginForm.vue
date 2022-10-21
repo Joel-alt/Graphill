@@ -1,10 +1,10 @@
 <template>
-  <div class="flex flex-1 flex-col bg-white border-2 border-gray-200 shadow-2xl max-w-3xl">
+  <div class="flex flex-col bg-white border-2 border-gray-200 shadow-2xl">
     <h1 class="text-center flex-1 text-4xl font-semibold">Connexion</h1>
     <form v-on:submit.prevent="onSubmit" class="flex flex-col">
-      <label for="fname">Username</label>
+      <label>Username</label>
       <input v-model="username" class="border-2 border-black">
-      <label for="lname">Password</label>
+      <label>Password</label>
       <input v-model="password" type="password" class="border-2 border-black">
       <button class="bg-footerBlue text-white" v-if="password === '' || username===''" disabled>Submit</button>
       <button v-else class="bg-footerBlue text-white" @click="onSubmit">Submit</button>

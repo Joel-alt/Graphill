@@ -1,8 +1,10 @@
 <template>
-  <BaseHeader/>
-    <div class="bg-bodyBlue h-full">
-    </div>
-  <BaseFooter/>
+  <div class="flex flex-col h-screen">
+    <BaseHeader/>
+      <div class="bg-bodyBlue grow">
+      </div>
+    <BaseFooter/>
+  </div>
 </template>
 
 <script>
