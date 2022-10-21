@@ -1,26 +1,26 @@
 <template>
   <div class="flex flex-col h-screen">
-  <BaseHeader />
-  <div class="bg-bodyBlue grow">
-    <div class="w-full flex snap-y md:snap-x overflow-auto justify-center flex-col md:justify-start p-7" id="gallery">
-      <div>
+    <BaseHeader />
+    <div class="bg-bodyBlue grow">
+      <div class="w-full flex snap-y md:snap-x overflow-auto justify-center flex-col md:justify-start p-7" id="gallery">
         <div>
-          <div v-if="sortLikes">
-            <button type="button" @click="sortLikesUp();">sort up {{sortLikes}}</button>
-          </div>
-          <div v-else>
-            <button type="button" @click="sortLikesDown();">sort down {{sortLikes}}</button>
+          <div>
+            <div v-if="sortLikes == 'desc'">
+              <button type="button" @click="sortLikesUp(this.sortLikes);">sort up {{sortLikes}}</button>
+            </div>
+            <div v-else>
+              <button type="button" @click="sortLikesUp(this.sortLikes);">sort down {{sortLikes}}</button>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="flex md:flex-row flex-col gap-16">
-        <span v-for="card in items" :key="card" class="snap-center self-center">
-          <Card :url=card.url :likes.sync=card.likes :id=card.id :isLiked=card.isLiked />
-        </span>
+        <div class="flex md:flex-row flex-col gap-16">
+          <span v-for="card in items" :key="card" class="snap-center self-center">
+            <Card :url=card.url :likes.sync=card.likes :id=card.id :isLiked=card.isLiked />
+          </span>
+        </div>
       </div>
     </div>
-  </div>
-  <BaseFooter />
+    <BaseFooter />
   </div>
 
 </template>
@@ -39,12 +39,12 @@ export default {
   data() {
     return {
       items: [],
-      sortLikes: true,
+      sortLikes: 'desc',
     }
   },
   methods: {
-    sortLikesUp() {
-      fetch("http://localhost:3300/illustrations/mostLiked", {
+    sortLikesUp(sort) {
+      fetch(`http://localhost:3300/illustrations/all?sortBy=${sort}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -55,22 +55,11 @@ export default {
         .then(response => {
           this.items = response;
           this.userLikes();
-          this.sortLikes = false;
-        })
-    },
-    sortLikesDown() {
-      fetch("http://localhost:3300/illustrations/lessLiked", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${localStorage.getItem('token')}`
-        },
-      })
-        .then(response => response.json())
-        .then(response => {
-          this.items = response;
-          this.userLikes();
-          this.sortLikes = true;
+          if (sort == 'desc') {
+            this.sortLikes = 'asc';
+          } else {
+            this.sortLikes = 'desc';
+          }
         })
     },
     userLikes() {
@@ -90,7 +79,7 @@ export default {
               }
               if (this.items[i].isLiked === undefined) {
                 this.items[i] = { ...this.items[i], isLiked: false };
-            }
+              }
             });
           }
         })
@@ -98,7 +87,7 @@ export default {
   },
   created() {
     if (this.items.length === 0) {
-      this.sortLikesUp();
+      this.sortLikesUp(this.sortLikes);
     }
   },
 };
