@@ -46,9 +46,9 @@ const deleteLikeList = async (id, userID) => {
     return await promisePool.query(query);
 }
 
-const allIllustrations = async (sortLikes) => {
+const sort = async (sort, category) => {
     const pool = utility.pool;
-    const query = `SELECT * FROM workOfArt ORDER BY likes ${sortLikes}`;
+    const query = `SELECT * FROM workOfArt ORDER BY ${category} ${sort}`;
     const promisePool = pool.promise();
     return await promisePool.query(query);
 }
@@ -58,4 +58,4 @@ exports.likeIllustration = likeIllustration;
 exports.hasLiked = hasLiked;
 exports.createLikeList = createLikeList;
 exports.unlikeIllustration = unlikeIllustration;
-exports.allIllustrations = allIllustrations;
+exports.sort = sort;

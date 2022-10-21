@@ -33,8 +33,9 @@ async function unlikeIllustration(req, res) {
 }
 
 async function allIllustrations(req, res) {
-    const sortLikes = req.query.sortBy;
-    const result = await illustrationRepository.allIllustrations(sortLikes);
+    const sort = req.query.sortBy;
+    const category = req.query.cat;
+    const result = await illustrationRepository.sort(sort, category);
     res.send(result[0]);
 }
 

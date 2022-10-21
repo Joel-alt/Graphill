@@ -6,10 +6,18 @@
         <div>
           <div>
             <div v-if="sortLikes == 'desc'">
-              <button type="button" @click="sortLikesUp(this.sortLikes);">sort up {{sortLikes}}</button>
+              <button type="button" @click="sortByLikes(this.sortLikes);" v-bind:class="(focusLikes) ? 'bg-slate-400': 'bg-white'">likes up {{sortLikes}}</button>
             </div>
             <div v-else>
-              <button type="button" @click="sortLikesUp(this.sortLikes);">sort down {{sortLikes}}</button>
+              <button type="button" @click="sortByLikes(this.sortLikes);" v-bind:class="(focusLikes) ? 'bg-slate-400': 'bg-white'">likes down {{sortLikes}}</button>
+            </div>
+          </div>
+          <div>
+            <div v-if="sortTitles == 'desc'">
+              <button type="button" @click="sortByTitles(this.sortTitles);" v-bind:class="(focusTitles) ? 'bg-slate-400': 'bg-white'">titles up {{sortTitles}}</button>
+            </div>
+            <div v-else>
+              <button type="button" @click="sortByTitles(this.sortTitles);" v-bind:class="(focusTitles) ? 'bg-slate-400': 'bg-white'">titles down {{sortTitles}}</button>
             </div>
           </div>
         </div>
@@ -40,11 +48,14 @@ export default {
     return {
       items: [],
       sortLikes: 'desc',
+      sortTitles: 'desc',
+      focusLikes: true,
+      focusTitles: false
     }
   },
   methods: {
-    sortLikesUp(sort) {
-      fetch(`http://localhost:3300/illustrations/all?sortBy=${sort}`, {
+    sortByLikes(sort) {
+      fetch(`http://localhost:3300/illustrations/all?cat=likes&sortBy=${sort}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -60,6 +71,29 @@ export default {
           } else {
             this.sortLikes = 'desc';
           }
+          this.focusLikes = true;
+          this.focusTitles = false;
+        })
+    },
+    sortByTitles(sort) {
+      fetch(`http://localhost:3300/illustrations/all?cat=title&sortBy=${sort}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem('token')}`
+        },
+      })
+        .then(response => response.json())
+        .then(response => {
+          this.items = response;
+          this.userLikes();
+          if (sort == 'desc') {
+            this.sortTitles = 'asc';
+          } else {
+            this.sortTitles = 'desc';
+          }
+          this.focusLikes = false;
+          this.focusTitles = true;
         })
     },
     userLikes() {
@@ -87,7 +121,7 @@ export default {
   },
   created() {
     if (this.items.length === 0) {
-      this.sortLikesUp(this.sortLikes);
+      this.sortByLikes(this.sortLikes);
     }
   },
 };
