@@ -43,6 +43,7 @@ export default {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem('token')}`
         },
       })
         .then(response => response.json())
@@ -52,10 +53,11 @@ export default {
         })
     },
     userLikes() {
-      fetch(`http://localhost:3300/illustrations/${1}/hasLiked`, {
+      fetch(`http://localhost:3300/illustrations/hasLiked`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem('token')}`
         },
       })
         .then(response => response.json())
