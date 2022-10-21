@@ -49,9 +49,7 @@ export default {
           .then((res) => res.json())
           .then((data) => {
             if(data.message==="User created !"){
-              localStorage.setItem('username', this.username);
-              localStorage.setItem('token', data.token);
-              router.push({ path: '/' });
+              router.push({ path: '/login' });
             }
             else if(data.error==="User already exist !"){
               this.error= "Cet utilisateur existe déjà !";
