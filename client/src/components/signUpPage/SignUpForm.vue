@@ -10,7 +10,7 @@
         <label>Confirmation du mot de passe</label>
         <input v-model="passwordConfirmation" type="password" class="border-2 border-black">
         <button class="bg-footerBlue text-white" v-if="username==='' || password==='' || passwordConfirmation===''" disabled>Valider</button>
-        <button v-else class="bg-footerBlue text-white" @click="onSubmit">Valider</button>
+        <button v-else class="bg-footerBlue text-white" @submit.prevent="onSubmit">Valider</button>
         <div class="text-red-500" v-if="error">{{error}}</div>
       </form>
     </div>

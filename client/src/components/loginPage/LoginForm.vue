@@ -8,7 +8,7 @@
         <label>Mot de passe</label>
         <input v-model="password" type="password" class="border-2 border-black">
         <button class="bg-footerBlue text-white" v-if="password === '' || username===''" disabled>Valider</button>
-        <button v-else class="bg-footerBlue text-white" @click="onSubmit">Valider</button>
+        <button v-else class="bg-footerBlue text-white" @submit.prevent="onSubmit">Valider</button>
         <div>Vous n'avez pas de compte ?<RouterLink class="text-blue-500" to="/signup"> En créer un !</RouterLink></div>
         <div class="text-red-500" v-if="error">{{error}}</div>
       </form>
