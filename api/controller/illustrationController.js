@@ -13,12 +13,28 @@ async function illustrationById(req, res) {
 
 async function likeIllustration(req, res) {
     const id = req.params.id;
-    const result = await illustrationRepository.likeIllustration(id);
+    const userID = req.body.userID;
+    const result = await illustrationRepository.likeIllustration(id, userID);
+    res.send(result[0]);
+}
+
+async function hasLiked(req, res) {
+    const id = req.params.id;
+    const result = await illustrationRepository.hasLiked(id);
+    res.send(result[0]);
+}
+
+async function createLikeList(req, res) {
+    const id = req.params.id;
+    const userID = req.body.userID;
+    const result = await illustrationRepository.createLikeList(id, userID);
     res.send(result[0]);
 }
 
 module.exports = {
     allIllustrations,
     illustrationById,
-    likeIllustration
+    likeIllustration,
+    hasLiked,
+    createLikeList
 }
