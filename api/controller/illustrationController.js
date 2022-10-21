@@ -11,7 +11,14 @@ async function illustrationById(req, res) {
     res.send(result[0]);
 }
 
+async function likeIllustration(req, res) {
+    const id = req.params.id;
+    const result = await illustrationRepository.likeIllustration(id);
+    res.send(result[0]);
+}
+
 module.exports = {
     allIllustrations,
-    illustrationById
+    illustrationById,
+    likeIllustration
 }
