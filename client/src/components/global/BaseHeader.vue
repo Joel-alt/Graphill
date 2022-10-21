@@ -7,7 +7,11 @@
       <p class="text-center flex-1 text-7xl font-semibold italic">Graphill</p>
       <ul class="flex flex-1 flex-wrap">
         <li class="flex flex-1 justify-end">
-          <router-link to="/login" class="mr-4 md:mr-6 text-2xl font-semibold">Se connecter</router-link>
+          <router-link v-if="username===null" to="/login" class="mr-4 md:mr-6 text-2xl font-semibold">Se connecter</router-link>
+          <div @mouseover="onDeconnexion = true" @mouseleave="onDeconnexion = false">
+            <div v-if="username!==null && onDeconnexion===false" class="mr-4 md:mr-6 text-2xl font-semibold">{{username}}</div>
+            <div v-if="username!==null && onDeconnexion===true" @click="deconnexion" class="mr-4 md:mr-6 text-2xl font-semibold">Se déconnecter</div>
+          </div>
         </li>
       </ul>
     </div>
@@ -19,5 +23,18 @@
 <script>
 export default {
   name: 'BaseHeader',
+  data() {
+    return {
+      username: localStorage.getItem('username'),
+      onDeconnexion: false,
+    }
+  },
+  methods: {
+    deconnexion() {
+      localStorage.removeItem('username');
+      localStorage.removeItem('token');
+      this.username = null;
+    },
+  },
 }
 </script>

@@ -19,7 +19,7 @@ async function login(req, res) {
             token: jwt.sign(
                 { userId: result[0][0].id },
                 'RANDOM_TOKEN_SECRET',
-                { expiresIn: '24h' }
+                { expiresIn: '1h' }
             )})
     });
 }

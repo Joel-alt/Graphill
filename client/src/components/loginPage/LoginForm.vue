@@ -46,6 +46,7 @@ export default {
           .then((res) => res.json())
           .then((data) => {
             if(data.token){
+              localStorage.setItem('username', this.username);
               localStorage.setItem('token', data.token);
               router.push({ path: '/' });
             }
