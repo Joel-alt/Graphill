@@ -1,3 +1,4 @@
+const auth = require("../middleware/auth");
 const illustrationRepository = require("../repository/illustrationRepository");
 
 async function allIllustrations(req, res) {
@@ -13,20 +14,19 @@ async function illustrationById(req, res) {
 
 async function likeIllustration(req, res) {
     const id = req.params.id;
-    const userID = req.body.userID;
+    const userID = req.auth.userId;
     const result = await illustrationRepository.likeIllustration(id, userID);
     res.send(result[0]);
 }
 
 async function hasLiked(req, res) {
-    const id = req.params.id;
-    const result = await illustrationRepository.hasLiked(id);
+    const userID = req.auth.userId;
+    const result = await illustrationRepository.hasLiked(userID);
     res.send(result[0]);
 }
 
 async function createLikeList(req, res) {
-    const id = req.params.id;
-    const userID = req.body.userID;
+    console.log(id, userID);
     const result = await illustrationRepository.createLikeList(id, userID);
     res.send(result[0]);
 }
