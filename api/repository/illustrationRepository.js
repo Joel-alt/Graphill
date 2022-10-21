@@ -1,8 +1,15 @@
 const utility = require("../utility/index");
 
-const allIllustrations = async () => {
+const sortLikesUp = async () => {
     const pool = utility.pool;
-    const query = `SELECT * FROM workOfArt`;
+    const query = `SELECT * FROM workOfArt ORDER BY likes DESC`;
+    const promisePool = pool.promise();
+    return await promisePool.query(query);
+}
+
+const sortLikesDown = async () => {
+    const pool = utility.pool;
+    const query = `SELECT * FROM workOfArt ORDER BY likes ASC`;
     const promisePool = pool.promise();
     return await promisePool.query(query);
 }
@@ -33,7 +40,6 @@ const hasLiked = async (userID) => {
 
 const createLikeList = async (id, userID) => {
     const pool = utility.pool;
-    console.log(id, userID);
     const query = `INSERT INTO likelist (userID, workOfArtID) VALUES (${userID}, ${id})`;
     const promisePool = pool.promise();
     return await promisePool.query(query);
@@ -54,7 +60,8 @@ const deleteLikeList = async (id, userID) => {
     return await promisePool.query(query);
 }
 
-exports.allIllustrations = allIllustrations;
+exports.sortLikesUp = sortLikesUp;
+exports.sortLikesDown = sortLikesDown;
 exports.illustrationById = illustrationById;
 exports.likeIllustration = likeIllustration;
 exports.hasLiked = hasLiked;

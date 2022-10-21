@@ -4,11 +4,13 @@
   <div class="bg-bodyBlue grow">
     <div class="w-full flex snap-y md:snap-x overflow-auto justify-center flex-col md:justify-start p-7" id="gallery">
       <div>
-        <div v-if="statusPrice">
-          <button type="button" @click="statusPrice=false">Price high</button>
-        </div>
-        <div v-else>
-          <button type="button" @click="statusPrice=true">Price low</button>
+        <div>
+          <div v-if="sortLikes">
+            <button type="button" @click="sortLikesUp();">sort up {{sortLikes}}</button>
+          </div>
+          <div v-else>
+            <button type="button" @click="sortLikesDown();">sort down {{sortLikes}}</button>
+          </div>
         </div>
       </div>
       <div class="flex md:flex-row flex-col gap-16">
@@ -37,12 +39,12 @@ export default {
   data() {
     return {
       items: [],
-      statusPrice: true,
+      sortLikes: true,
     }
   },
   methods: {
-    getIllustrations() {
-      fetch("http://localhost:3300/illustrations/all", {
+    sortLikesUp() {
+      fetch("http://localhost:3300/illustrations/mostLiked", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -52,7 +54,23 @@ export default {
         .then(response => response.json())
         .then(response => {
           this.items = response;
-          this.userLikes(); // this is the function that checks if the user has liked the illustration
+          this.userLikes();
+          this.sortLikes = false;
+        })
+    },
+    sortLikesDown() {
+      fetch("http://localhost:3300/illustrations/lessLiked", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem('token')}`
+        },
+      })
+        .then(response => response.json())
+        .then(response => {
+          this.items = response;
+          this.userLikes();
+          this.sortLikes = true;
         })
     },
     userLikes() {
@@ -80,7 +98,7 @@ export default {
   },
   created() {
     if (this.items.length === 0) {
-      this.getIllustrations();
+      this.sortLikesUp();
     }
   },
 };

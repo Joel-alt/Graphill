@@ -1,8 +1,13 @@
 const auth = require("../middleware/auth");
 const illustrationRepository = require("../repository/illustrationRepository");
 
-async function allIllustrations(req, res) {
-    const result = await illustrationRepository.allIllustrations();
+async function sortLikesUp(req, res) {
+    const result = await illustrationRepository.sortLikesUp();
+    res.send(result[0]);
+}
+
+async function sortLikesDown(req, res) {
+    const result = await illustrationRepository.sortLikesDown();
     res.send(result[0]);
 }
 
@@ -38,10 +43,11 @@ async function unlikeIllustration(req, res) {
 }
 
 module.exports = {
-    allIllustrations,
+    sortLikesUp,
+    sortLikesDown,
     illustrationById,
     likeIllustration,
     hasLiked,
     createLikeList,
-    unlikeIllustration
+    unlikeIllustration,
 }
