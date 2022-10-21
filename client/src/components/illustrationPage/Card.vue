@@ -4,13 +4,13 @@
       <img class="rounded-xl max-w-md" :src=url alt="image">
     </span>
     <div>
-      <button class="bg-black w-36 text-white rounded-xl m-2 h-10">likes {{newLikes}}</button>
+      <span class="bg-black w-36 text-white rounded-xl m-2 h-10">likes {{newLikes}}</span>
       <div v-if="likeStatus">
-        <button class="bg-black w-36 text-white rounded-xl m-2 h-10">Unlike</button>
+        <button class="bg-black w-36 text-white rounded-xl m-2 h-10" @click="unlike" >Unlike</button>
       </div>
       <div v-else>
         <button class="bg-black w-36 text-white rounded-xl m-2 h-10" @click="like">❤️</button>
-      </div> 
+      </div>
     </div>
   </div>
 </template>
@@ -41,6 +41,19 @@ export default {
       })
       this.newLikes++;
       this.likeStatus = true;
+    },
+    unlike() {
+      fetch(`http://localhost:3300/illustrations/${this.id}/delete`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem('token')}`
+        },
+      })
+      if (this.newLikes > 0) {
+        this.newLikes--;
+      }
+      this.likeStatus = false;
     },
   },
 }
