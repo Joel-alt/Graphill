@@ -5,7 +5,12 @@
     </span>
     <div>
       <button class="bg-black w-36 text-white rounded-xl m-2 h-10">likes {{newLikes}}</button>
-      <button class="bg-black w-36 text-white rounded-xl m-2 h-10" @click="like">❤️</button>
+      <div v-if="likeStatus">
+        <button class="bg-black w-36 text-white rounded-xl m-2 h-10">Unlike</button>
+      </div>
+      <div v-else>
+        <button class="bg-black w-36 text-white rounded-xl m-2 h-10" @click="like">❤️</button>
+      </div> 
     </div>
   </div>
 </template>
@@ -16,23 +21,29 @@ export default {
   props: {
     id: Number,
     url: String,
-    likes: Number
+    likes: Number,
+    isLiked: ''
   },
   data() {
     return {
       newLikes: this.likes,
+      likeStatus: this.isLiked
     }
   },
   methods: {
     like() {
       fetch(`http://localhost:3300/illustrations/${this.id}/like`, {
-        method: "PUT",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({
+          userID: 1,
+        })
       })
       this.newLikes++;
+      this.likeStatus = true;
     },
-  }
+  },
 }
 </script>
