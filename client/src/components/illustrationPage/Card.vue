@@ -36,10 +36,8 @@ export default {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem('token')}`
         },
-        body: JSON.stringify({
-          userID: 1,
-        })
       })
       this.newLikes++;
       this.likeStatus = true;
