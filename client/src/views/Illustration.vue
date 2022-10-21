@@ -3,21 +3,21 @@
     <BaseHeader />
     <div class="bg-bodyBlue grow">
       <div class="w-full flex snap-y md:snap-x overflow-auto justify-center flex-col md:justify-start p-7" id="gallery">
-        <div>
+        <div class="flex">
           <div>
             <div v-if="sortLikes == 'desc'">
-              <button type="button" @click="sortByLikes(this.sortLikes);" v-bind:class="(focusLikes) ? 'bg-slate-400': 'bg-white'">likes up {{sortLikes}}</button>
+              <button type="button" @click="sortByLikes(this.sortLikes);" v-bind:class="(focusLikes) ? 'buttonUp': 'buttonDown'">Likes 👇</button>
             </div>
             <div v-else>
-              <button type="button" @click="sortByLikes(this.sortLikes);" v-bind:class="(focusLikes) ? 'bg-slate-400': 'bg-white'">likes down {{sortLikes}}</button>
+              <button type="button" @click="sortByLikes(this.sortLikes);" v-bind:class="(focusLikes) ? 'buttonUp': 'buttonDown'">Likes 👆</button>
             </div>
           </div>
           <div>
             <div v-if="sortTitles == 'desc'">
-              <button type="button" @click="sortByTitles(this.sortTitles);" v-bind:class="(focusTitles) ? 'bg-slate-400': 'bg-white'">titles up {{sortTitles}}</button>
+              <button type="button" @click="sortByTitles(this.sortTitles);" v-bind:class="(focusTitles) ? 'buttonUp': 'buttonDown'">Titles 👇 </button>
             </div>
             <div v-else>
-              <button type="button" @click="sortByTitles(this.sortTitles);" v-bind:class="(focusTitles) ? 'bg-slate-400': 'bg-white'">titles down {{sortTitles}}</button>
+              <button type="button" @click="sortByTitles(this.sortTitles);" v-bind:class="(focusTitles) ? 'buttonUp': 'buttonDown'">Titles 👆 </button>
             </div>
           </div>
         </div>
@@ -139,5 +139,41 @@ export default {
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+}
+
+/* CSS */
+.buttonUp, .buttonDown {
+  margin: 1rem;
+  background-color: 709CA7;
+  border: 2px solid #242423;
+  border-radius: 30px;
+  box-shadow: #242423 4px 4px 0 0;
+  color: #242423;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 40px;
+  padding: 0 18px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.buttonUp {
+  background-color: #8bc0cd;
+}
+
+.buttonUp:active, .buttonDown:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .buttonUp, .buttonDown {
+    min-width: 120px;
+    padding: 0 25px;
+  }
 }
 </style>

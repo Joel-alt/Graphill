@@ -1,10 +1,10 @@
 <template>
   <div class="flex flex-col items-center">
-    <span class="cursor-pointer">
-      <img class="rounded-xl max-w-md" :src=url alt="image">
+    <span class="cursor-pointer border-4 border-neutral-800 rounded-2xl shadow-thick overflow-hidden">
+      <img class="rounded-xl max-w-md hover:scale-110 transition duration-1000 ease-in" :src=url alt="image">
     </span>
-    <div>
-      <span class="bg-black w-36 text-white rounded-xl m-2 h-10">likes {{newLikes}}</span>
+    <div class="flex">
+      <span class="bg-black w-36 text-white rounded-xl m-2 h-10 text-center">likes {{newLikes}}</span>
       <div v-if="likeStatus">
         <button class="bg-black w-36 text-white rounded-xl m-2 h-10" @click="unlike" >Unlike</button>
       </div>
