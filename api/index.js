@@ -12,5 +12,6 @@ app.use(bodyParser.json());
 app.use("/illustrations", illustrationRoutes);
 app.use("/user", userRoutes);
 
+app.use("/forms", formRoutes);
 
 app.listen(3300);
