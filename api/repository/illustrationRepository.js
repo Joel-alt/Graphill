@@ -55,7 +55,7 @@ const sort = async (sort, category) => {
 
 const getBidList = async () => {
     const pool = utility.pool;
-    const query = `SELECT username, price FROM bidList JOIN user ON user.id = bidList.userID`;
+    const query = `SELECT username, price FROM bidList JOIN user ON user.id = bidList.userID ORDER BY price DESC`;
     const promisePool = pool.promise();
     return await promisePool.query(query);
 }
