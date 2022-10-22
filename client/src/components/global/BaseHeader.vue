@@ -8,7 +8,7 @@
       <ul class="flex flex-1 flex-wrap">
         <li class="flex flex-1 justify-end">
           <router-link v-if="username===null" to="/login" class="mr-4 md:mr-6 text-2xl font-semibold">Se connecter</router-link>
-          <div @mouseover="onDeconnexion = true" @mouseleave="onDeconnexion = false">
+          <div @mouseover="onDeconnexion = true" @mouseleave="onDeconnexion = false" @click="onDeconnexion = false">
             <div v-if="username!==null && onDeconnexion===false" class="mr-4 md:mr-6 text-2xl font-semibold">{{username}}</div>
             <div v-if="username!==null && onDeconnexion===true" @click="deconnexion" class="mr-4 md:mr-6 text-2xl font-semibold">Se déconnecter</div>
           </div>
@@ -28,6 +28,11 @@ export default {
       username: localStorage.getItem('username'),
       onDeconnexion: false,
     }
+  },
+  mounted() {
+    window.addEventListener('localstorage-changed', (event) => {
+      this.username = event.detail.storage;
+    });
   },
   methods: {
     deconnexion() {

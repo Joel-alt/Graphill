@@ -45,6 +45,11 @@ export default {
             if(data.token){
               localStorage.setItem('username', this.username);
               localStorage.setItem('token', data.token);
+              window.dispatchEvent(new CustomEvent('localstorage-changed', {
+                detail: {
+                  storage: localStorage.getItem('username')
+                }
+              }));
               router.push({ path: '/' });
             }
             else{

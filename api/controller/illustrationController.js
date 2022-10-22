@@ -39,11 +39,17 @@ async function allIllustrations(req, res) {
     res.send(result[0]);
 }
 
+async function getBidList(req, res) {
+    const result = await illustrationRepository.getBidList();
+    console.log(result[0]);
+    res.send(result[0]);
+}
+
 module.exports = {
     illustrationById,
     likeIllustration,
     hasLiked,
-    createLikeList,
     unlikeIllustration,
-    allIllustrations
+    allIllustrations,
+    getBidList
 }
