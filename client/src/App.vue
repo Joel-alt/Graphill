@@ -1,3 +1,17 @@
+<!-- Afficher Home.vue dans l'app -->
 <template>
-  <router-view/>
+  <div id="app">
+    <HomeView />
+  </div>
 </template>
+
+<script>
+import HomeView from './views/Home.vue'
+
+export default {
+  name: 'App',
+  components: {
+    HomeView
+  }
+}
+</script>
