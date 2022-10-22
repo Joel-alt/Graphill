@@ -112,7 +112,7 @@ export default {
     width: 100%;
     height: 100%;
     background-color: #f5f5f5;
-    color: rgb(82, 78, 78);
+    color: linear-gradient(to top, var(--tw-gradient-stops));
     padding: 0 20px;
 }
 
