@@ -1,12 +1,12 @@
 <template>
   <div class="flex flex-col items-center">
-    <span class="cursor-pointer border-4 border-neutral-800 rounded-2xl shadow-thick overflow-hidden">
-      <img class="rounded-xl max-w-md hover:scale-110 transition duration-1000 ease-in" :src=url alt="image">
+    <span class=" border-4 border-neutral-800 rounded-2xl shadow-thick overflow-hidden">
+      <Modal :murl=url :mtitle=title :mdesc=desc />
     </span>
-    <div class="flex">
+    <div class="flex align-middle">
       <span class="bg-black w-36 text-white rounded-xl m-2 h-10 text-center">likes {{newLikes}}</span>
       <div v-if="likeStatus">
-        <button class="bg-black w-36 text-white rounded-xl m-2 h-10" @click="unlike" >Unlike</button>
+        <button class="bg-black w-36 text-white rounded-xl m-2 h-10" @click="unlike">Unlike</button>
       </div>
       <div v-else>
         <button class="bg-black w-36 text-white rounded-xl m-2 h-10" @click="like">❤️</button>
@@ -16,13 +16,20 @@
 </template>
 
 <script>
+import Modal from './Modal.vue'
+
 export default {
   name: 'CardView',
   props: {
     id: Number,
     url: String,
     likes: Number,
-    isLiked: ''
+    isLiked: '',
+    title: '',
+    desc: '',
+  },
+  components: {
+    Modal,
   },
   data() {
     return {

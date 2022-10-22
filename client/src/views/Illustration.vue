@@ -23,7 +23,7 @@
         </div>
         <div class="flex md:flex-row flex-col gap-16">
           <span v-for="card in items" :key="card" class="snap-center self-center">
-            <Card :url=card.url :likes.sync=card.likes :id=card.id :isLiked=card.isLiked />
+            <Card :url=card.url :likes=card.likes :id=card.id :isLiked=card.isLiked :title=card.title :desc=card.description />
           </span>
         </div>
       </div>
