@@ -1,19 +1,20 @@
 <template>
   <div class="flex flex-col items-center">
     <span class=" border-4 border-neutral-800 rounded-2xl shadow-thick overflow-hidden">
-      <Modal :mUrl=url :mTitle=title :mDesc=desc :mLikes=likes />
+      <Modal :mId=id :mUrl=url :mTitle=title :mDesc=desc :mLikes=likes />
     </span>
-    <div class="flex align-middle">
-      <span class="bg-black w-36 text-white rounded-xl m-2 h-10 text-center">likes {{newLikes}}
-      </span>
+    <div class="flex items-center">
+      <span class="text-lg md:text-xl tracking-wide font-medium text-red-600"> {{newLikes}}</span>
       <div v-if="likeStatus">
-        <button class="text-white rounded-xl m-2 h-10" @click="unlike">
-          <img class="w-8 inline-block" src="../../assets/notliked-64.png" alt="unlike">
+        <button class="text-white rounded-xl m-2 h-10">
+          <img class="w-8 inline-block hover:scale-125 duration-150" src="../../assets/like-64.png" @click="unlike"
+            alt="unlike">
         </button>
       </div>
       <div v-else>
-        <button class="text-white rounded-xl m-2 h-10" @click="like">
-          <img class="w-8 inline-block" src="../../assets/like-64.png" alt="like">
+        <button class="text-white rounded-xl m-2 h-10">
+          <img class="w-8 inline-block hover:scale-125 duration-150" src="../../assets/notliked-64.png" @click="like"
+            alt="like">
         </button>
       </div>
     </div>
