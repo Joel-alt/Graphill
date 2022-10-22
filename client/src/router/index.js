@@ -1,8 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Illustration from '../views/Illustration.vue'
+import Form from '../views/Form.vue'
+import About from '../views/About.vue'
 import Login from '../views/Login.vue'
 import SignUp from "../views/SignUp.vue";
+import Enchere from "../views/Enchere.vue";
 
 const routes = [
   {
@@ -16,6 +19,16 @@ const routes = [
     component: Illustration
   },
   {
+    path: '/form',
+    name: 'form',
+    component: Form
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: About
+  },
+  {
     path: '/login',
     name: 'login',
     component: Login
@@ -24,6 +37,11 @@ const routes = [
     path: '/signup',
     name: 'signup',
     component: SignUp
+  },
+  {
+    path: '/enchere',
+    name: 'enchere',
+    component: Enchere
   }
 ]
 

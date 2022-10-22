@@ -1,10 +1,5 @@
 <template>
-  <div class="flex flex-col h-screen">
-    <BaseHeader/>
-      <div class="bg-bodyBlue grow">
-      </div>
-    <BaseFooter/>
-  </div>
+
 </template>
 
 <script>

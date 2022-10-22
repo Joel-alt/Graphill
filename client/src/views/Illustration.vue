@@ -1,36 +1,29 @@
 <template>
-  <div class="flex flex-col h-screen">
-    <BaseHeader />
-    <div class="bg-bodyBlue grow">
-      <div class="w-full flex snap-y md:snap-x overflow-auto justify-center flex-col md:justify-start p-7" id="gallery">
-        <div class="flex">
-          <div>
-            <div v-if="sortLikes == 'desc'">
-              <button type="button" @click="sortByLikes(this.sortLikes);" v-bind:class="(focusLikes) ? 'buttonUp': 'buttonDown'">Likes 👇</button>
-            </div>
-            <div v-else>
-              <button type="button" @click="sortByLikes(this.sortLikes);" v-bind:class="(focusLikes) ? 'buttonUp': 'buttonDown'">Likes 👆</button>
-            </div>
+    <div class="w-full flex snap-y md:snap-x overflow-auto justify-center flex-col md:justify-start p-7" id="gallery">
+      <div class="flex">
+        <div>
+          <div v-if="sortLikes == 'desc'">
+            <button type="button" @click="sortByLikes(this.sortLikes);" v-bind:class="(focusLikes) ? 'buttonUp': 'buttonDown'">Likes 👇</button>
           </div>
-          <div>
-            <div v-if="sortTitles == 'desc'">
-              <button type="button" @click="sortByTitles(this.sortTitles);" v-bind:class="(focusTitles) ? 'buttonUp': 'buttonDown'">Titles 👇 </button>
-            </div>
-            <div v-else>
-              <button type="button" @click="sortByTitles(this.sortTitles);" v-bind:class="(focusTitles) ? 'buttonUp': 'buttonDown'">Titles 👆 </button>
-            </div>
+          <div v-else>
+            <button type="button" @click="sortByLikes(this.sortLikes);" v-bind:class="(focusLikes) ? 'buttonUp': 'buttonDown'">Likes 👆</button>
           </div>
         </div>
-        <div class="flex md:flex-row flex-col gap-16">
-          <span v-for="card in items" :key="card" class="snap-center self-center">
-            <Card :url=card.url :likes=card.likes :id=card.id :isLiked=card.isLiked :title=card.title :desc=card.description />
-          </span>
+        <div>
+          <div v-if="sortTitles == 'desc'">
+            <button type="button" @click="sortByTitles(this.sortTitles);" v-bind:class="(focusTitles) ? 'buttonUp': 'buttonDown'">Titles 👇 </button>
+          </div>
+          <div v-else>
+            <button type="button" @click="sortByTitles(this.sortTitles);" v-bind:class="(focusTitles) ? 'buttonUp': 'buttonDown'">Titles 👆 </button>
+          </div>
         </div>
       </div>
+      <div class="flex md:flex-row flex-col gap-16">
+        <span v-for="card in items" :key="card" class="snap-center self-center">
+          <Card :url=card.url :likes=card.likes :id=card.id :isLiked=card.isLiked :title=card.title :desc=card.description />
+        </span>
+      </div>
     </div>
-    <BaseFooter />
-  </div>
-
 </template>
 
 <script>
