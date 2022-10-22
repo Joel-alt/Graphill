@@ -38,10 +38,10 @@ export default {
   name: 'FormView',
   components: {
   },
-  async created(){
+  async created() {
       try {
-          const res = await axios.get(url1);
-          this.items = res.data;
+          //const res = await axios.get(url1);
+          //this.items = res.data;
       }catch(e){
           console.error(e);
       }
