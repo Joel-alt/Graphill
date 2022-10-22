@@ -1,6 +1,4 @@
 <template>
-  <BaseHeader />
-
   <div class="flex flex-col pt-10 mb-8 pl-10 pr-10">
   <h2 class="mb-4 text-2xl font-semibold text-center capitalize">
       <img src="../assets/efrei.png" class="max-w-sm h-20 w-100 align-middle inline-block" alt="">
@@ -52,8 +50,6 @@
     </div>
   </div>
 </div>
-
-  <BaseFooter class="bottom-0"/>
 </template>
 
 <script>

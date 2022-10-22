@@ -1,6 +1,4 @@
 <template>
-  <BaseHeader />
-  
   <div class="flex flex-col items-center"><br />
         <input class="bg-black text-gray-500 text-white" type="text" name="lastname" v-model="lastname" @keyup.enter="addData" placeholder=" Last Name"/> <br />
         <input class="bg-black text-gray-500 text-white" type="text" name="firstname" v-model="firstname" @keyup.enter="addData" placeholder=" First Name"/> <br />
@@ -32,23 +30,13 @@
        </tbody>
     </table>
     </div>
-    
-  <BaseFooter />
 </template>
 
 <script>
-import axios from 'axios'
-
-import BaseHeader from '@/components/global/BaseHeader.vue'
-import BaseFooter from '@/components/global/BaseFooter.vue'
-const url1 = "http://localhost:3300/forms/all"
-//const url2 = "http://localhost:3300/forms/add"
 
 export default {
   name: 'FormView',
   components: {
-    BaseHeader,
-    BaseFooter,
   },
   async created(){
       try {
@@ -73,16 +61,21 @@ export default {
       say: function (message){
           alert(message)
       },
-      async addData(){
+      addData(){
           try{
-              const res = await axios.post(url1, {"lastname": this.lastname, "firstname": this.firstname, "artistname": this.artistname, "studies": this.studies, "hostingTime": this.hostingTime});
-              this.items = [...this.items, res.data];
-              this.lastname = "";
-              this.firstname = "";
-              this.artistname = "";
-              this.studies = "";
-              this.hostingTime = "";
-              console.warn(this.items);
+              fetch("http://localhost:3300/forms/add", {
+                  method: "POST",
+                  headers: {
+                      "Content-Type": "application/json"
+                  },
+                  body: JSON.stringify({
+                      lastname: this.lastname,
+                      firstname: this.firstname,
+                      artistname: this.artistname,
+                      studies: this.studies,
+                      hostingTime: this.hostingTime,
+                  })
+              })
           }catch(e){
               console.error(e);
           }
