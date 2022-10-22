@@ -1,24 +1,34 @@
 <template>
   <div class="flex flex-col h-screen">
-  <BaseHeader />
-  <div class="bg-bodyBlue grow">
-    <div class="w-full flex snap-y md:snap-x overflow-auto justify-center flex-col md:justify-start p-7" id="gallery">
-      <div>
-        <div v-if="statusPrice">
-          <button type="button" @click="statusPrice=false">Price high</button>
+    <BaseHeader />
+    <div class="bg-bodyBlue grow">
+      <div class="w-full flex snap-y md:snap-x overflow-auto justify-center flex-col md:justify-start p-7" id="gallery">
+        <div class="flex">
+          <div>
+            <div v-if="sortLikes == 'desc'">
+              <button type="button" @click="sortByLikes(this.sortLikes);" v-bind:class="(focusLikes) ? 'buttonUp': 'buttonDown'">Likes 👇</button>
+            </div>
+            <div v-else>
+              <button type="button" @click="sortByLikes(this.sortLikes);" v-bind:class="(focusLikes) ? 'buttonUp': 'buttonDown'">Likes 👆</button>
+            </div>
+          </div>
+          <div>
+            <div v-if="sortTitles == 'desc'">
+              <button type="button" @click="sortByTitles(this.sortTitles);" v-bind:class="(focusTitles) ? 'buttonUp': 'buttonDown'">Titles 👇 </button>
+            </div>
+            <div v-else>
+              <button type="button" @click="sortByTitles(this.sortTitles);" v-bind:class="(focusTitles) ? 'buttonUp': 'buttonDown'">Titles 👆 </button>
+            </div>
+          </div>
         </div>
-        <div v-else>
-          <button type="button" @click="statusPrice=true">Price low</button>
+        <div class="flex md:flex-row flex-col gap-16">
+          <span v-for="card in items" :key="card" class="snap-center self-center">
+            <Card :url=card.url :likes=card.likes :id=card.id :isLiked=card.isLiked :title=card.title :desc=card.description />
+          </span>
         </div>
-      </div>
-      <div class="flex md:flex-row flex-col gap-16">
-        <span v-for="card in items" :key="card" class="snap-center self-center">
-          <Card :url=card.url :likes.sync=card.likes :id=card.id :isLiked=card.isLiked />
-        </span>
       </div>
     </div>
-  </div>
-  <BaseFooter />
+    <BaseFooter />
   </div>
 
 </template>
@@ -37,12 +47,15 @@ export default {
   data() {
     return {
       items: [],
-      statusPrice: true,
+      sortLikes: 'desc',
+      sortTitles: 'desc',
+      focusLikes: true,
+      focusTitles: false
     }
   },
   methods: {
-    getIllustrations() {
-      fetch("http://localhost:3300/illustrations/all", {
+    sortByLikes(sort) {
+      fetch(`http://localhost:3300/illustrations/all?cat=likes&sortBy=${sort}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -52,7 +65,35 @@ export default {
         .then(response => response.json())
         .then(response => {
           this.items = response;
-          this.userLikes(); // this is the function that checks if the user has liked the illustration
+          this.userLikes();
+          if (sort == 'desc') {
+            this.sortLikes = 'asc';
+          } else {
+            this.sortLikes = 'desc';
+          }
+          this.focusLikes = true;
+          this.focusTitles = false;
+        })
+    },
+    sortByTitles(sort) {
+      fetch(`http://localhost:3300/illustrations/all?cat=title&sortBy=${sort}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem('token')}`
+        },
+      })
+        .then(response => response.json())
+        .then(response => {
+          this.items = response;
+          this.userLikes();
+          if (sort == 'desc') {
+            this.sortTitles = 'asc';
+          } else {
+            this.sortTitles = 'desc';
+          }
+          this.focusLikes = false;
+          this.focusTitles = true;
         })
     },
     userLikes() {
@@ -72,7 +113,7 @@ export default {
               }
               if (this.items[i].isLiked === undefined) {
                 this.items[i] = { ...this.items[i], isLiked: false };
-            }
+              }
             });
           }
         })
@@ -80,7 +121,7 @@ export default {
   },
   created() {
     if (this.items.length === 0) {
-      this.getIllustrations();
+      this.sortByLikes(this.sortLikes);
     }
   },
 };
@@ -98,5 +139,41 @@ export default {
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+}
+
+/* CSS */
+.buttonUp, .buttonDown {
+  margin: 1rem;
+  background-color: 709CA7;
+  border: 2px solid #242423;
+  border-radius: 30px;
+  box-shadow: #242423 4px 4px 0 0;
+  color: #242423;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 40px;
+  padding: 0 18px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.buttonUp {
+  background-color: #8bc0cd;
+}
+
+.buttonUp:active, .buttonDown:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .buttonUp, .buttonDown {
+    min-width: 120px;
+    padding: 0 25px;
+  }
 }
 </style>
