@@ -1,21 +1,18 @@
 <template>
-    <img class="cursor-pointer rounded-xl max-w-md hover:scale-110 transition duration-1000 ease-in" :src=murl
+    <img class="cursor-pointer rounded-xl md:max-w-md hover:scale-110 transition duration-1000 ease-in" :src=mUrl
         alt="image" @click="open = true">
     <div v-if="open" class="modal">
-        <div class="bg-slate-100 rounded-xl h-4/5 md:h-auto  overflow-scroll m-10">
+        <div class="bg-slate-100 rounded-xl h-4/5 md:h-auto overflow-scroll m-10">
             <div class="flex flex-col md:flex-row">
-                <img class="h-96  md:h-auto object-cover md:w-96" :src="murl">
+                <img class="h-96  md:h-auto object-cover md:w-96" :src="mUrl">
                 <div class="flex flex-col px-5 justify-between">
                     <div class="justify-center">
-                        <h5 class="text-gray-900 text-3xl font-medium my-4">{{mtitle}}</h5>
+                        <h5 class="text-gray-900 text-3xl font-medium my-4">{{mTitle}}</h5>
                         <p class="text-gray-700 text-lg mb-4 md:w-72">
-                            Basic examples
-                            Radio buttons are a popular way to allow users to make a single selection & should be used
-                            instead of checkboxes if only one item can be selected from a list of options.
-
-                            Group a series of buttons together on a single line using the following code.
+                            {{mDesc}}
                         </p>
-                        <p class="text-gray-600 text-xs">Last updated 3 mins ago</p>
+                        <p class="text-gray-600 text-medium">{{mLikes}}
+                            <img class="w-5" src="../../assets/like-64.png" alt="like"></p>
                     </div>
                     <button @click="open = false" class="m-10">Go back</button>
                 </div>
@@ -28,9 +25,10 @@
 export default {
     name: 'ModalView',
     props: {
-        murl: String,
-        mtitle: String,
-        mdesc: String,
+        mUrl: String,
+        mTitle: String,
+        mDesc: String,
+        mLikes: Number,
     },
     data() {
         return {

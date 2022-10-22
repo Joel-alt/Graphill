@@ -137,7 +137,6 @@ export default {
 /* CSS */
 .buttonUp, .buttonDown {
   margin: 1rem;
-  background-color: 709CA7;
   border: 2px solid #242423;
   border-radius: 30px;
   box-shadow: #242423 4px 4px 0 0;
