@@ -1,15 +1,23 @@
 <template>
-    <img class="cursor-pointer rounded-xl max-w-md hover:scale-110 transition duration-1000 ease-in" :src=murl alt="image" @click="open = true">
+    <img class="cursor-pointer rounded-xl max-w-md hover:scale-110 transition duration-1000 ease-in" :src=murl
+        alt="image" @click="open = true">
     <div v-if="open" class="modal">
-        <div class="bg-slate-100 rounded-xl p-5 w-auto h-1/2 overflow-scroll m-10">
-            <div class="flex justify-end">
-                <button @click="open = false" >X</button>
-            </div>
-            <div class="flex">
-                <img :src="murl" class="max-w-md rounded-md">
-                <div class="mx-10">
-                    <h1 class="text-2xl font-bold">{{mtitle}}</h1>
-                    <p class="text-xl">{{mdesc}}</p>
+        <div class="bg-slate-100 rounded-xl h-4/5 md:h-auto  overflow-scroll m-10">
+            <div class="flex flex-col md:flex-row">
+                <img class="h-96  md:h-auto object-cover md:w-96" :src="murl">
+                <div class="flex flex-col px-5 justify-between">
+                    <div class="justify-center">
+                        <h5 class="text-gray-900 text-3xl font-medium my-4">{{mtitle}}</h5>
+                        <p class="text-gray-700 text-lg mb-4 md:w-72">
+                            Basic examples
+                            Radio buttons are a popular way to allow users to make a single selection & should be used
+                            instead of checkboxes if only one item can be selected from a list of options.
+
+                            Group a series of buttons together on a single line using the following code.
+                        </p>
+                        <p class="text-gray-600 text-xs">Last updated 3 mins ago</p>
+                    </div>
+                    <button @click="open = false" class="m-10">Go back</button>
                 </div>
             </div>
         </div>
