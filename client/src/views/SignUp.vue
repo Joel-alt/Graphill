@@ -1,10 +1,6 @@
 <template>
-  <div class="flex flex-col h-screen">
-    <BaseHeader/>
-    <div class="bg-bodyBlue justify-center align-middle flex p-16 grow">
-      <SignUpForm/>
-    </div>
-    <BaseFooter/>
+  <div class="justify-center align-middle flex p-16 ">
+    <SignUpForm/>
   </div>
 </template>
 
