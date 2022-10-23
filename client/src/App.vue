@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col h-screen">
     <BaseHeader/>
-    <div class="bg-bodyBlue grow">
+    <div class="bg-slate-50 grow">
       <router-view />
     </div>
     <BaseFooter/>

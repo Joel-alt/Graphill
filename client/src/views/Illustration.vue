@@ -3,18 +3,18 @@
       <div class="flex">
         <div>
           <div v-if="sortLikes == 'desc'">
-            <button type="button" @click="sortByLikes(this.sortLikes);" v-bind:class="(focusLikes) ? 'buttonUp': 'buttonDown'">Likes 👆</button>
+            <button type="button" @click="sortByLikes(this.sortLikes);" v-bind:class="(focusLikes) ? 'buttonUp': 'buttonDown'">LIKES 👆</button>
           </div>
           <div v-else>
-            <button type="button" @click="sortByLikes(this.sortLikes);" v-bind:class="(focusLikes) ? 'buttonUp': 'buttonDown'">Likes 👇</button>
+            <button type="button" @click="sortByLikes(this.sortLikes);" v-bind:class="(focusLikes) ? 'buttonUp': 'buttonDown'">LIKES 👇</button>
           </div>
         </div>
         <div>
           <div v-if="sortTitles == 'desc'">
-            <button type="button" @click="sortByTitles(this.sortTitles);" v-bind:class="(focusTitles) ? 'buttonUp': 'buttonDown'">Titles 👆</button>
+            <button type="button" @click="sortByTitles(this.sortTitles);" v-bind:class="(focusTitles) ? 'buttonUp': 'buttonDown'">TITLES 👆</button>
           </div>
           <div v-else>
-            <button type="button" @click="sortByTitles(this.sortTitles);" v-bind:class="(focusTitles) ? 'buttonUp': 'buttonDown'">Titles 👇</button>
+            <button type="button" @click="sortByTitles(this.sortTitles);" v-bind:class="(focusTitles) ? 'buttonUp': 'buttonDown'">TITLES 👇</button>
           </div>
         </div>
       </div>
@@ -140,20 +140,18 @@ export default {
   box-shadow: #242423 4px 4px 0 0;
   color: #242423;
   cursor: pointer;
-  font-weight: 600;
-  font-size: 18px;
+  font-size: 30px;
   line-height: 40px;
   padding: 0 18px;
   text-align: center;
   text-decoration: none;
   user-select: none;
   -webkit-user-select: none;
-  touch-action: manipulation;
 }
 
 .buttonUp {
-  background-color: #971dfd;
-  color: white
+  color: #8f1dfd;
+  font-weight: 900;
 }
 
 .buttonUp:active, .buttonDown:active {
@@ -162,8 +160,8 @@ export default {
 }
 
 .backgroundGradient {
-  background: rgb(58,66,180);
-  background: linear-gradient(90deg, rgba(58,66,180,1) 0%, rgba(143,29,253,1) 50%, rgba(252,69,219,1) 100%);
+  background: #3a42b4;
+  background: linear-gradient(90deg, #3a42b4 0%, #8f1dfd 50%, #fc45db 100%);
 }
 
 @media (min-width: 768px) {
