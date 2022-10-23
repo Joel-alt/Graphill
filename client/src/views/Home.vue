@@ -4,11 +4,11 @@
     <div class="home__artist">
       <div class="home__artist__image">
         <p>Image</p>
-        <!--<img :src="artist.image" alt="photo de l'artiste" />-->
+        <img :src="artist.artistImage" alt="photo de l'artiste" />
       </div>
       <div class="home__artist__description">
-        <h1>Henry<!--{{ artist.name }}--></h1>
-        <p>C'est le meilleur artiste !<!--{{ artist.description }}--></p>
+        <h1>{{ artist.artistName }}</h1>
+        <p>{{ artist.description }}</p>
       </div>
       <div class="home__artist__reseaux">
         <a href="https://www.instagram.com/?hl=fr">Mon Instagram</a>
@@ -48,8 +48,7 @@
     </div>
     <div class="home__gallery">
       <div class="home__gallery__images">
-        <p>Image</p>
-        <!--<img :src="image1.url" alt="photo de l'artiste" />-->
+        <img :src="image1.url"/>
       </div>
       <div class="home__gallery__acces">
         <a href="/illustration" class="link">
@@ -70,8 +69,7 @@
         </a>
       </div>
       <div class="home__gallery__images">
-        <p>Image</p>
-        <!--<img :src="image2.url" alt="photo de l'artiste" />-->
+        <img :src="image2.url"/>
       </div>
     </div>
     <div class="home__support">
@@ -98,23 +96,23 @@ export default {
   },
   methods: {
     getArtist() {
-      fetch('' , {
+      fetch('http://localhost:3300/illustrations/getartist' , {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          "Authorization": `Bearer ${localStorage.getItem('token')}`
         },
       })
         .then((response) => response.json())
         .then((data) => {
           this.artist = data;
+          console.log(this.artist);
         })
         .catch((error) => {
           console.error('Error:', error);
         });
     },
     getImage() {
-      fetch('' , {
+      fetch('http://localhost:3300/illustrations/all?cat=title&sortBy=asc' , {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -125,12 +123,17 @@ export default {
         .then((data) => {
           this.image1 = data[1];
           this.image2 = data[2];
+          console.log(data);
         })
         .catch((error) => {
           console.error('Error:', error);
         });
     }
   },
+  mounted() {
+    this.getArtist();
+    this.getImage();
+  }
 }   
 </script>
 
@@ -166,8 +169,8 @@ export default {
   margin-top: 40px;
 }
 .home__artist__image img {
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 50%;
   object-fit: cover;
 }
 .home__artist__description {
