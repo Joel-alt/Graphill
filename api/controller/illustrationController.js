@@ -41,7 +41,6 @@ async function allIllustrations(req, res) {
 
 async function getBidList(req, res) {
     const result = await illustrationRepository.getBidList();
-    console.log(result[0]);
     res.send(result[0]);
 }
 

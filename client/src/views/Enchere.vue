@@ -30,7 +30,7 @@
                 </div>
              </div>
       <!-- Ajouter un formulaire pour ajouter une enchère -->
-             <div class="enchere__body__form">
+             <div v-if="isConnected===true" class="enchere__body__form">
                 <div class="enchere__body__form__title">
                     <h2>Faire une enchère</h2>
                 </div>
@@ -60,12 +60,16 @@ export default {
           name: 'Tableau',
           description: 'Tableau de Picasso',
           image: 'https://picsum.photos/500/300',
-          price: 0,
         },
+        price: 0,
+        isConnected: false,
         bids: []
       }
     },
   mounted() {
+    window.addEventListener('user-has-disconnected', (event) => {
+      this.isConnected = false;
+    });
       fetch('http://localhost:3300/illustrations/bidList', {
         method: "GET",
         headers: {
@@ -82,6 +86,9 @@ export default {
       .catch((error) => {
         console.log(error);
       });
+      if(localStorage.getItem('token')) {
+        this.isConnected = true;
+      }
   },
   methods: {
       addBid() {

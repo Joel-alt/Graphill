@@ -39,6 +39,7 @@ export default {
       localStorage.removeItem('username');
       localStorage.removeItem('token');
       this.username = null;
+      window.dispatchEvent(new CustomEvent('user-has-disconnected'));
     },
   },
 }
