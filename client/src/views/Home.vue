@@ -114,7 +114,7 @@ export default {
         });
     },
     getImage() {
-      fetch('http://localhost:3300/illustrations/hasLiked' , {
+      fetch('' , {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
