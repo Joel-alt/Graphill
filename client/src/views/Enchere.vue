@@ -21,33 +21,27 @@
                 </div>
                 <div class="enchere__body__bids__list">
                     <!--Classe les participants dans l'ordre du meilleur prix-->
-                    <div v-for="bid in bids" :key="bid.id" class="enchere__body__bids__list__bid">
+                    <div v-for="bid in bids" :key="bid.price" class="enchere__body__bids__list__bid">
                         <div class="enchere__body__bids__list__bid__user">
-                            <p class="text-2xl">{{ bid.user }}</p>
+                            <p class="text-2xl">{{ bid.username }}</p>
                             <p class="enchere__body__bids__list__bid__price">{{ bid.price }}</p>
-                            <button @click="deleteBid(bid.id)">Supprimer</button>
                         </div>    
                     </div>
                 </div>
              </div>
       <!-- Ajouter un formulaire pour ajouter une enchère -->
-             <div class="enchere__body__form">
+             <div v-if="isConnected===true" class="enchere__body__form">
                 <div class="enchere__body__form__title">
                     <h2>Faire une enchère</h2>
                 </div>
                 <div class="enchere__body__form__content">
-                    <form @submit.prevent="addBid">
-                        <div class="enchere__body__form__content__input">
-                            <label class="mr-3 text-lg" for="user">Utilisateur</label>
-                            <input type="text" id="user" v-model="user" />
-                        </div>
-                        <br>
+                    <form>
                         <div class="enchere__body__form__content__input">
                             <label class="mr-3 text-lg" for="price">Prix</label>
                             <input type="number" id="price" v-model="price" />
                         </div>
                         <div class="enchere__body__form__content__button">
-                            <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" type="submit">Ajouter</button>
+                            <button @click="addBid" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" type="submit">Ajouter</button>
                         </div>
                     </form>
                 </div>
@@ -67,39 +61,54 @@ export default {
           description: 'Tableau de Picasso',
           image: 'https://picsum.photos/500/300',
         },
-        bids: [
-          {
-            id: 1,
-            user: 'Toto',
-            price: 100,
-          },
-          {
-            id: 2,
-            user: 'Titi',
-            price: 200,
-          },
-          {
-            id: 3,
-            user: 'Tata',
-            price: 300,
-          },
-        ],
+        price: 0,
+        isConnected: false,
+        bids: []
       }
     },
-    methods: {
-      deleteBid(id) {
-        this.bids = this.bids.filter((bid) => bid.id !== id)
+  mounted() {
+    window.addEventListener('user-has-disconnected', (event) => {
+      this.isConnected = false;
+    });
+      fetch('http://localhost:3300/illustrations/bidList', {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem('token')}`
         },
+      })
+      .then((response) => response.json())
+      .then (
+          response2 => {
+            this.bids = response2
+          }
+      )
+      .catch((error) => {
+        console.log(error);
+      });
+      if(localStorage.getItem('token')) {
+        this.isConnected = true;
+      }
+  },
+  methods: {
       addBid() {
-        this.bids.push({
-            id: this.bids.length + 1,
-            user: this.user,
-            price: this.price,
+        fetch(`http://localhost:3300/user/outbid`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+          },
+          body: JSON.stringify({outbid: this.price,})
         })
-        this.user = ''
-        this.price = ''
-        }
-    },
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      },
+  }
 }
 </script>
 
@@ -111,8 +120,7 @@ export default {
     align-items: center;
     width: 100%;
     height: 100%;
-    background-color: #f5f5f5;
-    color: rgb(82, 78, 78);
+    background-color: #ECFBFF;;
     padding: 0 20px;
 }
 
@@ -124,8 +132,8 @@ export default {
     text-transform: uppercase;
     width: 50%;
     height: 50px;
-    background-color: rgb(88, 82, 82);
-    color: #fff;
+    background-color: #ECFBFF;
+    color: rgb(5, 4, 4);
     padding: 0 20px;
 }
 
@@ -135,7 +143,7 @@ export default {
     align-items: center;
     width: 100%;
     height: 100%;
-    background-color: #fff;
+    background-color: #ECFBFF;
     padding: 0 20px;
 }
 
@@ -146,7 +154,7 @@ export default {
     align-items: center;
     width: 50%;
     height: 100%;
-    background-color: #fff;
+    background-color: #ECFBFF;
     padding: 0 10px;
     margin-left: 20px;
 }
@@ -155,7 +163,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
+    background-color: #ECFBFF;
     color: #333;
 }
 
@@ -172,7 +180,7 @@ export default {
     align-items: center;
     width: 100%;
     height: 50%;
-    background-color: #fff;
+    background-color: #ECFBFF;
     color: #333;
     padding: 0 20px;
 }
@@ -183,7 +191,7 @@ export default {
     align-items: center;
     width: 70%;
     height: 90%;
-    background-color: #fff;
+    background-color: #ECFBFF;
     color: #333;
     padding: 0 20px;
 }
@@ -194,7 +202,7 @@ export default {
     align-items: center;
     width: 100%;
     height: 60px;
-    background-color: #fff;
+    background-color:#ECFBFF;
     color: #333;
     font:  bold 24px/1 sans-serif;
     padding: 0 20px 10px;
@@ -206,7 +214,7 @@ export default {
     align-items: center;
     width: 100%;
     height: 90%;
-    background-color: rgb(255, 255, 255);
+    background-color: #ECFBFF;
     color: #333;
     padding: 0 20px;
 }
@@ -217,7 +225,7 @@ export default {
     align-items: center;
     width: 100%;
     height: 50px;
-    background-color: #fff;
+    background-color: #ECFBFF;
     color: #333;
     padding: 0 20px;
 }
@@ -226,7 +234,7 @@ export default {
     display: flex;
     width: 100%;
     height: 100%;
-    background-color: #fff;
+    background-color: #ECFBFF;
     color: #333;
     padding: 0 20px;
 }
@@ -259,7 +267,7 @@ export default {
     align-items: center;
     width: 50%;
     height: 75%;
-    background-color: rgb(255, 255, 255);
+    background-color: #ECFBFF;
     color: #333;
     padding: 0 20px;
 }
@@ -270,7 +278,7 @@ export default {
     align-items: center;
     width: 100%;
     height: 60px;
-    background-color: #fff;
+    background-color: #ECFBFF;
     color: #333;
     font:  bold 20px/1 sans-serif;
     padding: 0 20px 10px;
@@ -281,7 +289,7 @@ export default {
     align-items: center;
     width: 100%;
     height: 50px;
-    background-color: #fff;
+    background-color:#ECFBFF;
     color: #333;
     padding: 0 20px;
 }
@@ -292,15 +300,6 @@ export default {
     border-width: 2px;
     border-color: #333;
     background-color: #fff;
-    color: #333;
-    padding: 0 20px;
-}
-
-.enchere__body__form__content__input input[type="text"] {
-    width: 50%;
-    height: 100%;
-    background-color: #fff;
-    border-color: #333;
     color: #333;
     padding: 0 20px;
 }
@@ -321,7 +320,7 @@ export default {
     width: 100%;
     height: 50px;
     margin-top: 50px;
-    background-color: #fff;
+    background-color: #ECFBFF;
     color: #333;
     padding: 0 20px;
 }
