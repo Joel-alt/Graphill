@@ -51,7 +51,7 @@ export default {
                   storage: localStorage.getItem('username')
                 }
               }));
-              router.push({ path: '/' });
+              router.go(-1);
             }
             else{
               if(data.error==="User does not exist !"){
