@@ -60,6 +60,13 @@ const getBidList = async () => {
     return await promisePool.query(query);
 }
 
+const getArtist = async () => {
+    const pool = utility.pool;
+    const query = `SELECT * FROM artists`;
+    const promisePool = pool.promise();
+    return await promisePool.query(query);
+}
+
 exports.illustrationById = illustrationById;
 exports.likeIllustration = likeIllustration;
 exports.hasLiked = hasLiked;
@@ -67,3 +74,4 @@ exports.createLikeList = createLikeList;
 exports.unlikeIllustration = unlikeIllustration;
 exports.sort = sort;
 exports.getBidList = getBidList;
+exports.getArtist = getArtist;

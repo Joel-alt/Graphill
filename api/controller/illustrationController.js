@@ -45,11 +45,17 @@ async function getBidList(req, res) {
     res.send(result[0]);
 }
 
+async function getArtist(req, res) {
+    const result = await illustrationRepository.getArtist();
+    res.send(result[0][0]);
+}
+
 module.exports = {
     illustrationById,
     likeIllustration,
     hasLiked,
     unlikeIllustration,
     allIllustrations,
-    getBidList
+    getBidList,
+    getArtist,
 }
