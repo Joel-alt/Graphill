@@ -9,7 +9,7 @@
         <input v-model="password" type="password" class="form">
         <br>
         <button class="bg-blue-400 hover:bg-blue-300 text-white font-bold py-2 px-4 border-b-4 border-blue-600 hover:border-blue-400 rounded" v-if="password === '' || username===''" disabled>Valider</button>
-        <button v-else class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" @submit.prevent="onSubmit">Valider</button>
+        <button v-else class="bg-blue-400 hover:bg-blue-300 text-white font-bold py-2 px-4 border-b-4 border-blue-600 hover:border-blue-400 rounded" @submit.prevent="onSubmit">Valider</button>
         <div class="text">Vous n'avez pas de compte ?<RouterLink class="text-blue-500" to="/signup"> En créer un !</RouterLink></div>
         <div class="text-red-500" v-if="error">{{error}}</div>
       </form>

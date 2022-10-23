@@ -10,7 +10,7 @@
             <input class="form"  type="text" name="studies" v-model="studies" @keyup.enter="addData" placeholder=" Studies"/>
             <input class="form"  type="text" name="hostingTime" v-model="hostingTime" @keyup.enter="addData" placeholder=" Hosting Time"/>
             <br>
-            <button class="bg-transparent hover:bg-blue-300 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-300 hover:border-transparent rounded" v-on:click="say('Submit successfully!')"> Submit </button> 
+            <button class="bg-transparent hover:bg-blue-400 text-blue-600 font-semibold hover:text-white py-2 px-4 border border-blue-400 hover:border-transparent rounded" v-on:click="say('Submit successfully!')"> Submit </button> 
         </div>
     </div>
 </template>
