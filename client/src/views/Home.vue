@@ -3,7 +3,6 @@
   <div class="home">
     <div class="home__artist">
       <div class="home__artist__image">
-        <p>Image</p>
         <img :src="artist.artistImage" alt="photo de l'artiste" />
       </div>
       <div class="home__artist__description">
@@ -54,8 +53,40 @@
         <a href="/illustration" class="link">
           <span class="mask">
             <div class="link-container">
-              <span class="link-title1 title">Accéder à la gallerie de notre Artiste</span>
-              <span class="link-title2 title">Accéder à la gallerie de notre Artiste</span>
+              <span class="link-title1 title">Accéder à la gallerie</span>
+              <span class="link-title2 title">Accéder à la gallerie</span>
+            </div>
+          </span>
+          <div class="link-icon">
+            <svg class="icon" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+              <path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z" />
+            </svg>
+            <svg class="icon" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+              <path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z" />
+            </svg>
+          </div>
+        </a>
+        <a href="/enchere" class="link">
+          <span class="mask">
+            <div class="link-container">
+              <span class="link-title1 title">Accéder aux enchères</span>
+              <span class="link-title2 title">Accéder aux enchères</span>
+            </div>
+          </span>
+          <div class="link-icon">
+            <svg class="icon" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+              <path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z" />
+            </svg>
+            <svg class="icon" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+              <path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z" />
+            </svg>
+          </div>
+        </a>
+        <a href="/form" class="link">
+          <span class="mask">
+            <div class="link-container">
+              <span class="link-title1 title">Intéressé par le concept ?</span>
+              <span class="link-title2 title">Intéressé par le concept ?</span>
             </div>
           </span>
           <div class="link-icon">
@@ -155,12 +186,13 @@ export default {
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 100%;
+  height: 50%;
+  max-height: 300px;
   padding: 0 20px;
 }
 .home__artist__image {
   width: 100%;
-  height: 100%;
+  height: 50%;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -169,9 +201,9 @@ export default {
   margin-top: 40px;
 }
 .home__artist__image img {
-  width: 50%;
-  height: 50%;
-  object-fit: cover;
+  width: 100%;
+  height: 200%;
+  object-fit: contain;
 }
 .home__artist__description {
   width: 100%;
@@ -247,6 +279,7 @@ export default {
   margin-bottom: 20px;
 }
 .home__gallery__acces {
+  
   width: 100%;
   height: 100%;
   text-align: center;
@@ -259,7 +292,8 @@ export default {
   font-family: "Quicksand", sans-serif;
   text-transform: uppercase;
   font-size: 1rem;
-  margin-left: 20px;
+  justify-content: center;
+  margin-bottom: 10%;
   cursor: pointer;
 }
 .home__gallery__images {
@@ -272,8 +306,8 @@ export default {
   height: 100%;
 }
 .home__gallery__images img {
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
   object-fit: cover;
 }
 

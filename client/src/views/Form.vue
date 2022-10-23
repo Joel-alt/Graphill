@@ -1,7 +1,7 @@
 <template>
 <div class="px-10 pt-8 pb-5 mb-3 flex flex-col items-center max-w-s">
   <form v-on:submit.prevent="onSubmit" class="bg-white shadow-md rounded px-10 pt-8 pb-5 mb-3"><br />
-        <div class="mb-6 block text-gray-700 text-base font-semibold capitalize">Veuillez remplir ce formulaire pour demander de devis :</div>
+        <div class="mb-6 block text-gray-700 text-base font-semibold capitalize">Veuillez remplir ce formulaire pour demander un devis :</div>
         <input class="mb-6 shadow apprearance-none border rounded w-full py-3 px-3 text-gray-500 text-black leading-tight focus:outline-none focus:shadow-outline" type="text" name="lastname" v-model="lastname" placeholder="Nom de famille" required/> <br />
         <input class="mb-6 shadow apprearance-none border rounded w-full py-3 px-3 text-gray-500 text-black leading-tight focus:outline-none focus:shadow-outline" type="text" name="firstname" v-model="firstname" placeholder="Prénom" required/> <br />
         <input class="mb-6 shadow apprearance-none border rounded w-full py-3 px-3 text-gray-500 text-black leading-tight focus:outline-none focus:shadow-outline" type="text" name="artistname" v-model="artistname" placeholder="Nom d'artiste" required/> <br />
