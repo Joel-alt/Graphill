@@ -43,6 +43,7 @@ export default {
       sortLikes: 'desc',
       sortTitles: 'desc',
       focusLikes: true,
+      focusTitles: false,
     }
   },
   methods: {
@@ -51,7 +52,6 @@ export default {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${localStorage.getItem('token')}`
         },
       })
         .then(response => response.json())
@@ -72,7 +72,6 @@ export default {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${localStorage.getItem('token')}`
         },
       })
         .then(response => response.json())
@@ -164,7 +163,7 @@ export default {
 
 .backgroundGradient {
   background: rgb(58,66,180);
-background: linear-gradient(90deg, rgba(58,66,180,1) 0%, rgba(143,29,253,1) 50%, rgba(252,69,219,1) 100%);
+  background: linear-gradient(90deg, rgba(58,66,180,1) 0%, rgba(143,29,253,1) 50%, rgba(252,69,219,1) 100%);
 }
 
 @media (min-width: 768px) {
