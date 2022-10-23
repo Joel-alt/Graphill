@@ -1,22 +1,28 @@
 <template>
-  <header class="bg-gradient-to-b from-headerBlue to-bodyBlue">
+  <header class="bg-slate-50">
     <div class="flex items-center flex-col sm:flex-row">
-      <router-link to="/" class="flex flex-1 ">
-        <img src="../../assets/logo_graphill_noir.png" class="h-24 w-64 ml-4 mt-4" alt="Graphill Logo"/>
-      </router-link>
-      <p class="text-center flex-1 text-7xl font-semibold italic">Graphill</p>
+      <div>
+        <router-link to="/" class="flex flex-1 ">
+          <img src="@/assets/graphill-violet.png" class="md:max-w-sm" />
+        </router-link>
+        <p class="text-center text-lg font-extralight">Votre galerie d'art en ligne</p>
+      </div>
       <ul class="flex flex-1 flex-wrap">
         <li class="flex flex-1 justify-end">
-          <router-link v-if="username===null" to="/login" class="mr-4 md:mr-6 text-2xl font-semibold">Se connecter</router-link>
+          <router-link v-if="username===null" to="/login" class="userbutton">Se connecter
+          </router-link>
           <div @mouseover="onDeconnexion = true" @mouseleave="onDeconnexion = false" @click="onDeconnexion = false">
-            <div v-if="username!==null && onDeconnexion===false" class="mr-4 md:mr-6 text-2xl font-semibold">{{username}}</div>
-            <div v-if="username!==null && onDeconnexion===true" @click="deconnexion" class="mr-4 md:mr-6 text-2xl font-semibold">Se déconnecter</div>
+            <div v-if="username!==null && onDeconnexion===false" class="userbutton flex items-center">
+              {{username}}
+              <img src="@/assets/user-60.png" class="w-5 h-5 ml-5" />
+            </div>
+            <div v-if="username!==null && onDeconnexion===true" @click="deconnexion" class="userbutton">Se déconnecter
+            </div>
           </div>
         </li>
       </ul>
     </div>
-    <div class="my-4"/>
-    <p class="text-center text-2xl font-semibold">Votre galerie d'art en ligne</p>
+    <div class="my-4" />
   </header>
 </template>
 
@@ -44,3 +50,30 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.userbutton {
+  margin: 1rem;
+  background: #3a42b4;
+  background:  #8f1dfd;
+  border: 2px solid #242423;
+  border-radius: 30px;
+  box-shadow: #242423 4px 4px 0 0;
+  color: #f3f3f3;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 40px;
+  padding: 0 18px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.userbutton:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+</style>

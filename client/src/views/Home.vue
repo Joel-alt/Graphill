@@ -136,7 +136,6 @@ export default {
         .then((response) => response.json())
         .then((data) => {
           this.artist = data;
-          console.log(this.artist);
         })
         .catch((error) => {
           console.error('Error:', error);
@@ -154,7 +153,6 @@ export default {
         .then((data) => {
           this.image1 = data[1];
           this.image2 = data[2];
-          console.log(data);
         })
         .catch((error) => {
           console.error('Error:', error);
