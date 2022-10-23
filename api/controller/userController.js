@@ -40,7 +40,24 @@ async function signUp(req, res) {
     res.status(201).json({ message: 'User created !' });
 }
 
+async function outbid(req, res) {
+    const id = req.auth.userId;
+    const outbid = req.body.outbid;
+    const result = await userRepository.hasBid(id);
+    const result2 = await userRepository.getPieceInOutbid();
+    const idOfWorkOfArt = result2[0][0].workOfArtID;
+    if(result[0].length === 0) {
+        await userRepository.addBid( idOfWorkOfArt, id, outbid);
+        res.status(201).json({ message: 'Bid created !' });
+    }
+    else {
+        await userRepository.outbid(id, outbid);
+        res.status(201).json({ message: 'Outbid save !' });
+    }
+}
+
 module.exports = {
     login,
-    signUp
+    signUp,
+    outbid
 }

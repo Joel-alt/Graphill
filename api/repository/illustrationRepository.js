@@ -53,9 +53,25 @@ const sort = async (sort, category) => {
     return await promisePool.query(query);
 }
 
+const getBidList = async () => {
+    const pool = utility.pool;
+    const query = `SELECT username, price FROM bidList JOIN user ON user.id = bidList.userID ORDER BY price DESC`;
+    const promisePool = pool.promise();
+    return await promisePool.query(query);
+}
+
+const getArtist = async () => {
+    const pool = utility.pool;
+    const query = `SELECT * FROM artists`;
+    const promisePool = pool.promise();
+    return await promisePool.query(query);
+}
+
 exports.illustrationById = illustrationById;
 exports.likeIllustration = likeIllustration;
 exports.hasLiked = hasLiked;
 exports.createLikeList = createLikeList;
 exports.unlikeIllustration = unlikeIllustration;
 exports.sort = sort;
+exports.getBidList = getBidList;
+exports.getArtist = getArtist;

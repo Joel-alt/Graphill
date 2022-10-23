@@ -1,25 +1,25 @@
 <template>
-    <div class="w-full flex snap-y md:snap-x overflow-auto justify-center flex-col md:justify-start p-7" id="gallery">
+    <div class="flex flex-col p-5">
       <div class="flex">
         <div>
           <div v-if="sortLikes == 'desc'">
-            <button type="button" @click="sortByLikes(this.sortLikes);" v-bind:class="(focusLikes) ? 'buttonUp': 'buttonDown'">Likes 👇</button>
+            <button type="button" @click="sortByLikes(this.sortLikes);" v-bind:class="(focusLikes) ? 'buttonUp': 'buttonDown'">Likes 👆</button>
           </div>
           <div v-else>
-            <button type="button" @click="sortByLikes(this.sortLikes);" v-bind:class="(focusLikes) ? 'buttonUp': 'buttonDown'">Likes 👆</button>
+            <button type="button" @click="sortByLikes(this.sortLikes);" v-bind:class="(focusLikes) ? 'buttonUp': 'buttonDown'">Likes 👇</button>
           </div>
         </div>
         <div>
           <div v-if="sortTitles == 'desc'">
-            <button type="button" @click="sortByTitles(this.sortTitles);" v-bind:class="(focusTitles) ? 'buttonUp': 'buttonDown'">Titles 👇 </button>
+            <button type="button" @click="sortByTitles(this.sortTitles);" v-bind:class="(focusTitles) ? 'buttonUp': 'buttonDown'">Titles 👆</button>
           </div>
           <div v-else>
-            <button type="button" @click="sortByTitles(this.sortTitles);" v-bind:class="(focusTitles) ? 'buttonUp': 'buttonDown'">Titles 👆 </button>
+            <button type="button" @click="sortByTitles(this.sortTitles);" v-bind:class="(focusTitles) ? 'buttonUp': 'buttonDown'">Titles 👇</button>
           </div>
         </div>
       </div>
-      <div class="flex md:flex-row flex-col gap-16">
-        <span v-for="card in items" :key="card" class="snap-center self-center">
+      <div class="flex md:flex-row flex-col gap-14 md:gap-24 snap-x overflow-auto border-4 border-neutral-800 shadow-thick rounded-3xl backgroundGradient" id="gallery" >
+        <span v-for="card in items" :key="card" class="snap-center self-center p-10">
           <Card :url=card.url :likes=card.likes :id=card.id :isLiked=card.isLiked :title=card.title :desc=card.description />
         </span>
       </div>
@@ -43,7 +43,6 @@ export default {
       sortLikes: 'desc',
       sortTitles: 'desc',
       focusLikes: true,
-      focusTitles: false
     }
   },
   methods: {
@@ -110,7 +109,7 @@ export default {
             });
           }
         })
-    },
+    }
   },
   created() {
     if (this.items.length === 0) {
@@ -137,8 +136,7 @@ export default {
 /* CSS */
 .buttonUp, .buttonDown {
   margin: 1rem;
-  background-color: 709CA7;
-  border: 2px solid #242423;
+  border: 2px solid #242324;
   border-radius: 30px;
   box-shadow: #242423 4px 4px 0 0;
   color: #242423;
@@ -155,12 +153,18 @@ export default {
 }
 
 .buttonUp {
-  background-color: #8bc0cd;
+  background-color: #971dfd;
+  color: white
 }
 
 .buttonUp:active, .buttonDown:active {
   box-shadow: #422800 2px 2px 0 0;
   transform: translate(2px, 2px);
+}
+
+.backgroundGradient {
+  background: rgb(58,66,180);
+background: linear-gradient(90deg, rgba(58,66,180,1) 0%, rgba(143,29,253,1) 50%, rgba(252,69,219,1) 100%);
 }
 
 @media (min-width: 768px) {
