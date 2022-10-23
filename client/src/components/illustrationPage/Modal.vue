@@ -126,7 +126,6 @@ export default {
 }
 
 .title {
-    border-radius: 0.75rem;
     padding: 0.5rem 1rem;
     position: absolute;
     left: 0;
@@ -136,14 +135,16 @@ export default {
     height: fit-content;
     font-size: 40px;
     display: none;
-    color: whitesmoke
+    color: whitesmoke;
+    animation-name: frombottomanimation;
+    animation-duration: 0.8s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 #container:hover .title {
     background: rgb(58, 66, 180);
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.722), rgba(255, 255, 255, 0) 100%);
     display: flex;
-    justify-content: start;
     align-items: center;
 }
 </style>
