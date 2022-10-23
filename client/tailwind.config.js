@@ -4,7 +4,6 @@ module.exports = {
         extend: {
             colors: {
                 'headerBlue': '#709CA7',
-                'bodyBlue': '#ECFBFF',
                 'footerBlue': '#344D59',
             },
             boxShadow: {
