@@ -1,88 +1,59 @@
 <template>
-    <div>
-        <div class="text-center text-xl">
-            <p>Afin que nous puissions accéder à votre demande, veuillir remplir le formulaire ci-dessous. Nous vous répondrons dans un délai de 7 jours.</p>
-        </div>
-        <div class="flex flex-col items-center"><br />
-            <input class="form" type="text" name="lastname" v-model="lastname" @keyup.enter="addData" placeholder=" Last Name"/>
-            <input class="form"  type="text" name="firstname" v-model="firstname" @keyup.enter="addData" placeholder=" First Name"/>
-            <input class="form"  type="text" name="artistname" v-model="artistname" @keyup.enter="addData" placeholder=" Artist Name"/>
-            <input class="form"  type="text" name="studies" v-model="studies" @keyup.enter="addData" placeholder=" Studies"/>
-            <input class="form"  type="text" name="hostingTime" v-model="hostingTime" @keyup.enter="addData" placeholder=" Hosting Time"/>
-            <br>
-            <button class="bg-transparent hover:bg-blue-400 text-blue-600 font-semibold hover:text-white py-2 px-4 border border-blue-400 hover:border-transparent rounded" v-on:click="say('Submit successfully!')"> Submit </button> 
-        </div>
-    </div>
+<div class="px-10 pt-8 pb-5 mb-3 flex flex-col items-center max-w-s">
+  <form v-on:submit.prevent="onSubmit" class="bg-white shadow-md rounded px-10 pt-8 pb-5 mb-3"><br />
+        <div class="mb-6 block text-gray-700 text-base font-semibold capitalize">Veuillez remplir ce formulaire pour demander de devis :</div>
+        <input class="mb-6 shadow apprearance-none border rounded w-full py-3 px-3 text-gray-500 text-black leading-tight focus:outline-none focus:shadow-outline" type="text" name="lastname" v-model="lastname" placeholder="Nom de famille" required/> <br />
+        <input class="mb-6 shadow apprearance-none border rounded w-full py-3 px-3 text-gray-500 text-black leading-tight focus:outline-none focus:shadow-outline" type="text" name="firstname" v-model="firstname" placeholder="Prénom" required/> <br />
+        <input class="mb-6 shadow apprearance-none border rounded w-full py-3 px-3 text-gray-500 text-black leading-tight focus:outline-none focus:shadow-outline" type="text" name="artistname" v-model="artistname" placeholder="Nom d'artiste" required/> <br />
+        <input class="mb-6 shadow apprearance-none border rounded w-full py-3 px-3 text-gray-500 text-black leading-tight focus:outline-none focus:shadow-outline" type="email" name="email" v-model="email" placeholder="Email" required/> <br />
+        <input class="mb-6 shadow apprearance-none border rounded w-full py-3 px-3 text-gray-500 text-black leading-tight focus:outline-none focus:shadow-outline" type="text" name="hostingTime" v-model="hostingTime" placeholder="Durée de l'hébergement" required/> <br />
+        <button class="mb-6 bg-blue-500 hover:bg-footerBlue text-white w-full font-bold py-3 rounded focus:outline-none focus:shadow-outline" @submit.prevent="onSubmit"> Envoyer </button> 
+  </form>
+</div>
 </template>
 
 <script>
-
 export default {
   name: 'FormView',
   components: {
   },
-  async created() {
-      try {
-          //const res = await axios.get(url1);
-          //this.items = res.data;
-      }catch(e){
-          console.error(e);
-      }
-  },
   data(){
       return {
-          items: [],
-          lastname: "",
-          firstname: "",
-          artistname: "",
-          studies: "",
-          hostingTime: "",
-          
-      };
+          lastname: '',
+          firstname: '',
+          artistname: '',
+          email: '',
+          hostingTime: '',
+      }
   },
   methods: {
-      say: function (message){
-          alert(message)
-      },
-      addData(){
-          try{
-              fetch("http://localhost:3300/forms/add", {
-                  method: "POST",
-                  headers: {
-                      "Content-Type": "application/json"
-                  },
-                  body: JSON.stringify({
-                      lastname: this.lastname,
-                      firstname: this.firstname,
-                      artistname: this.artistname,
-                      studies: this.studies,
-                      hostingTime: this.hostingTime,
-                  })
-              })
-          }catch(e){
-              console.error(e);
-          }
+      onSubmit(){
+          fetch('http://localhost:3300/forms/all', {
+              method: "POST",
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                  lastname: this.lastname,
+                  firstname: this.firstname,
+                  artistname: this.artistname,
+                  email: this.email,
+                  hostingTime: this.hostingTime,
+              }),
+          }).then((res) => res.json())
+          .then((data) => {
+              if (data.message==="Form submited !"){
+                  router.push({path: '/all'});
+              }
+          })
+          alert("Bonjour, " + this.artistname + ". Votre demande a été prise en compte et vous aurez le devis d'ici quelques jours. Merci !")
+          this.lastname = ''
+          this.firstname = ''
+          this.artistname = ''
+          this.email = ''
+          this.hostingTime = ''
       },
   }
-  
 }
 </script>
 
-<style scoped>
-.form {
-    width: 300px;
-    height: 40px;
-    border: 1px solid #ccc;
-    border-radius: 7px;
-    background-color: #bfdbfe;
-    color: #000000;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-}
-
-::placeholder {
-    color: #000000;
-    opacity: 1;
-}
-</style>

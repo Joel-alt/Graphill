@@ -1,23 +1,16 @@
 const formRepository = require("../repository/formRepository");
 
-async function addForm(req, res) {
-    const result = await formRepository.addForm();
-    res.send(result[0]);
-}
+async function all(req, res) {
+    const lastname = req.body.lastname;
+    const firstname = req.body.firstname;
+    const artistname = req.body.artistname;
+    const email = req.body.email;
+    const hostingTime = req.body.hostingTime;
 
-async function allForms(req, res) {
-    const result = await formRepository.allForms();
-    res.send(result[0]);
-}
-
-async function formById(req, res) {
-    const id = req.params.id; // req.params.id is the id in the url
-    const result = await formRepository.formById(id);
-    res.send(result[0]);
+    const result = await formRepository.all(lastname, firstname, artistname, email, hostingTime);
+    res.status(201).json({message: 'Form submited !'});
 }
 
 module.exports = {
-    addForm,
-    allForms,
-    formById
+    all,
 }
