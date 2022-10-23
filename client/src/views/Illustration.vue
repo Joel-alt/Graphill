@@ -43,7 +43,6 @@ export default {
       sortLikes: 'desc',
       sortTitles: 'desc',
       focusLikes: true,
-      focusTitles: false
     }
   },
   methods: {
