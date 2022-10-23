@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-1 justify-center bg-white border-2 border-gray-200 shadow-2xl">
+  <div class="flex flex-1 justify-center border-2 border-gray-200 shadow-2xl">
     <div class="max-w-3xl flex flex-1 flex-col justify-center">
       <h1 class="text-center text-4xl font-semibold pb-8">Inscription</h1>
       <form v-on:submit.prevent="onSubmit" class="flex flex-col">
