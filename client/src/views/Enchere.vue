@@ -35,13 +35,13 @@
                     <h2>Faire une enchère</h2>
                 </div>
                 <div class="enchere__body__form__content">
-                    <form @submit.prevent="addBid">
+                    <form>
                         <div class="enchere__body__form__content__input">
                             <label class="mr-3 text-lg" for="price">Prix</label>
                             <input type="number" id="price" v-model="price" />
                         </div>
                         <div class="enchere__body__form__content__button">
-                            <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" type="submit">Ajouter</button>
+                            <button @click="addBid" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" type="submit">Ajouter</button>
                         </div>
                     </form>
                 </div>
@@ -60,33 +60,39 @@ export default {
           name: 'Tableau',
           description: 'Tableau de Picasso',
           image: 'https://picsum.photos/500/300',
+          price: 0,
         },
         bids: []
       }
     },
-    methods: {
-      printRanking() {
-        fetch('http://localhost:3300/illustrations/bidList', {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${localStorage.getItem('token')}`
-        },
-      })
-        .then((response) => response.json())
-        .then (response2 => {this.bids = console.log(response2)})
-        .catch((error) => {
-          console.log(error);
-        });
-      },
-      /*addBid() {
-        fetch(`http://localhost:3300/user/outbid`, {
-        method: "POST",
+  mounted() {
+      fetch('http://localhost:3300/illustrations/bidList', {
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${localStorage.getItem('token')}`
         },
       })
+      .then((response) => response.json())
+      .then (
+          response2 => {
+            this.bids = response2
+          }
+      )
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+  methods: {
+      addBid() {
+        fetch(`http://localhost:3300/user/outbid`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+          },
+          body: JSON.stringify({outbid: this.price,})
+        })
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
@@ -94,8 +100,8 @@ export default {
         .catch((error) => {
           console.error(error);
         });
-      },*/
-    }
+      },
+  }
 }
 </script>
 
