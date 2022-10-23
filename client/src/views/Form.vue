@@ -8,7 +8,7 @@
         <button class="px-4 py-1 text-sm font-semibold rounded-full border border-200" v-on:click="say('Submit successfully!')"> Submit </button> 
   </div>
 
-  <div class="flex flex-col items-center"><br />
+  <div class="flex flex-col items-center"><br/>
    <table class="table-auto border-separate border-2 border-slate-500">
        <thead>
            <tr>
@@ -29,7 +29,7 @@
         </tr>
        </tbody>
     </table>
-    </div>
+  </div>
 </template>
 
 <script>
