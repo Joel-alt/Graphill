@@ -1,10 +1,10 @@
 <template>
-    <img class="cursor-pointer rounded-xl md:max-w-md hover:scale-110 transition duration-1000 ease-in" :src=mUrl
+    <img class="cursor-pointer rounded-xl md:max-w-md" :src=mUrl
         alt="image" @click="open = true; userLikes()">
     <div v-if="open" class="modal">
-        <div class="bg-slate-100 rounded-xl h-4/5 md:h-auto overflow-scroll m-10">
+        <div class="bg-slate-100 rounded-xl h-4/5 md:h-auto overflow-scroll m-10 frombottom">
             <div class="flex flex-col md:flex-row">
-                <img class="min-h-96  md:h-auto object-cover md:w-96" :src="mUrl">
+                <img class="min-h-96 md:h-auto object-cover md:w-96" :src="mUrl">
                 <div class="flex flex-col px-5 justify-between">
                     <div class="justify-center">
                         <h5 class="text-gray-900 text-3xl font-medium my-4">{{mTitle}}</h5>
@@ -96,6 +96,24 @@ export default {
 .close:active {
   box-shadow: #422800 2px 2px 0 0;
   transform: translate(2px, 2px);
+}
+
+.frombottom {
+  /* animation properties */
+  animation-name: frombottomanimation;
+  animation-duration: 0.8s;
+  animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@keyframes frombottomanimation {
+  from {
+    opacity: 0;
+    transform: translateY(10%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 }
 
 </style>
