@@ -77,6 +77,15 @@ export default {
   name: 'AboutView',
   components: {
   },
+  data(){
+      return {
+          lastname: '',
+          firstname: '',
+          email: '',
+          message: '',
+          genre: '',
+      }
+  },
   methods: {
       onSubmit(){
           var emailData = {
