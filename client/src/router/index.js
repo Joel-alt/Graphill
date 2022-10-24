@@ -6,6 +6,7 @@ import About from '../views/About.vue'
 import Login from '../views/Login.vue'
 import SignUp from "../views/SignUp.vue";
 import Enchere from "../views/Enchere.vue";
+import Error404 from "../views/Error404.vue";
 
 const routes = [
   {
@@ -42,7 +43,12 @@ const routes = [
     path: '/enchere',
     name: 'enchere',
     component: Enchere
-  }
+  },
+  {
+    path: '/:catchAll(.*)*',
+    name: 'error',
+    component: Error404
+  },
 ]
 
 const router = createRouter({
