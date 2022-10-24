@@ -30,9 +30,6 @@
                 </div>
             </button>
         </form>
-        
-        <Modal v-show="showModal" @close-modal="showModal = false"/>
-        
         <div v-else class="form z-0" id="container">
             <img class="rounded-xl md:max-w-md hover z-10">
             <a class="connect z-10" href="/login">Connect to submit the form 👀</a>
@@ -57,6 +54,7 @@
                 </button>
             </div>
         </div>
+        <Modal v-show="showModal" @close-modal="showModal = false"/>
     </div>
 </template>
 

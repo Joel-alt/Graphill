@@ -4,45 +4,44 @@
       <img class="check-png" src="../../assets/check.png" alt="" />
       <p>Envoyé !</p>
       <!--<p>Vous aurez la réponse d'ici quelques jours. Merci !</p>-->
-    </div>
-    <div class="close" @click="$emit('close-modal')">
-      <img class="close-png" src="../../assets/close.png" alt="" />
+      <div @click="$emit('close-modal')">
+        <div class="close">
+          Fermer
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-      name: 'Modal',
+export default {
+  name: 'Modal',
 }
 </script>
 
 <style scoped>
-
 .modal-overlay {
   position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
-  background-color: #000000da;
+  align-items: center;
+  background-color: rgba(22, 22, 22, 0.742);
 }
 
 .modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
   text-align: center;
+  min-width: 20rem;
   background-color: white;
-  height: 300px;
-  width: 400px;
-  margin-top: 20%;
-  padding: 60px 140px;
   border-radius: 20px;
-}
-
-.close {
-  margin: 10% 0 0 16px;
-  cursor: pointer;
 }
 
 .close-png {
@@ -62,4 +61,22 @@ p {
   margin: 20px 0;
 }
 
+.close {
+  margin: 1rem;
+  background-color: #8f1dfd;
+  border: 2px solid #242423;
+  border-radius: 30px;
+  box-shadow: #242423 4px 4px 0 0;
+  color: #f3f3f3;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 40px;
+  padding: 0 18px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
 </style>
