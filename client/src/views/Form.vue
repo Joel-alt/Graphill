@@ -58,6 +58,8 @@
 </template>
 
 <script>
+import emailjs from '@emailjs/browser';
+
 export default {
     name: 'FormView',
     data() {
@@ -85,16 +87,27 @@ export default {
                     hostingTime: this.hostingTime,
                 }),
             }).then((res) => res.json())
-                .then((data) => {
-                    if (data.message === "Form submited !") {
-                        alert("Bonjour, " + this.artistname + ". Votre demande a été prise en compte et vous aurez le devis d'ici quelques jours. Merci !")
-                        this.lastname = ''
-                        this.firstname = ''
-                        this.artistname = ''
-                        this.email = ''
-                        this.hostingTime = ''
+            .then((data) => {
+              if (data.message==="Form submited !"){
+                  var emailData = {
+                    service_id: 'service_bjyjicy',
+                    template_id: 'template_jr3rz6m',
+                    public_key: 'mYDFRnd_mFESSuUPi',
+                    templateParams:{
+                       artistname: this.artistname,
+                       email: this.email
                     }
-                })
+              };
+              emailjs.send(emailData.service_id,emailData.template_id,emailData.templateParams,emailData.public_key)
+              .then((result)=>{console.log('success!', result.text);}, (error) => {console.log('failed...', error.text);});
+                  alert("Bonjour, " + this.firstname + " " + this.lastname + ". Votre demande a été prise en compte et vous aurez le devis d'ici quelques jours. Merci !")
+                  this.lastname = ''
+                  this.firstname = ''
+                  this.artistname = ''
+                  this.email = ''
+                  this.hostingTime = ''
+              }
+          })
         },
     },
     created() {
