@@ -90,9 +90,9 @@ export default {
             .then((data) => {
               if (data.message==="Form submited !"){
                   var emailData = {
-                    service_id: 'service_bjyjicy',
-                    template_id: 'template_jr3rz6m',
-                    public_key: 'mYDFRnd_mFESSuUPi',
+                    service_id: 'service_y0ttors',
+                    template_id: 'template_a36geo8',
+                    public_key: 'IjkwnJhq__n82EB-v',
                     templateParams:{
                        artistname: this.artistname,
                        email: this.email
