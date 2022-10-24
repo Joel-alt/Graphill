@@ -8,9 +8,9 @@
         <label>Mot de passe</label>
         <input v-model="password" type="password" class="form">
         <br>
-        <button class="bg-blue-400 hover:bg-blue-300 text-white font-bold py-2 px-4 border-b-4 border-blue-600 hover:border-blue-400 rounded" v-if="password === '' || username===''" disabled>Valider</button>
-        <button v-else class="bg-blue-400 hover:bg-blue-300 text-white font-bold py-2 px-4 border-b-4 border-blue-600 hover:border-blue-400 rounded" @submit.prevent="onSubmit">Valider</button>
-        <div class="text">Vous n'avez pas de compte ?<RouterLink class="text-blue-500" to="/signup"> En créer un !</RouterLink></div>
+        <button class="button" v-if="password === '' || username===''" disabled>Valider</button>
+        <button v-else class="button" @submit.prevent="onSubmit">Valider</button>
+        <div class="text">Vous n'avez pas de compte ?<RouterLink class="text-fuchsia-800" to="/signup"> En créer un !</RouterLink></div>
         <div class="text-red-500" v-if="error">{{error}}</div>
       </form>
     </div>
@@ -87,5 +87,27 @@ label{
   font-family: Georgia, Cambria, "Times New Roman", Times, serif;
   text-align: center;
   padding-top: 10px;
+}
+.button {
+    display: flex;
+    margin: 1rem;
+    width: 50%;
+    margin-left: 25%;
+    justify-content: center;
+    background: #3a42b4;
+    background:  #8f1dfd;
+    border: 2px solid #242423;
+    border-radius: 30px;
+    box-shadow: #242423 4px 4px 0 0;
+    color: #f3f3f3;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
 }
 </style>

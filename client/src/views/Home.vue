@@ -3,44 +3,44 @@
   <div class="home">
     <div class="home__artist">
       <div class="home__artist__image">
-        <p>Image</p>
-        <img :src="artist.artistImage" alt="photo de l'artiste" />
+        <img class="flex md:flex-row flex-col gap-14 md:gap-24 snap-x overflow-auto border-4 border-neutral-800 shadow-thick rounded-3xl" :src="artist.artistImage" alt="photo de l'artiste" />
       </div>
       <div class="home__artist__description">
         <h1>{{ artist.artistName }}</h1>
         <p>{{ artist.description }}</p>
       </div>
       <div class="home__artist__reseaux">
-        <a href="https://www.instagram.com/?hl=fr">Mon Instagram</a>
-        <a href="https://www.facebook.com/">Mon Facebook</a>
-        <a href="https://twitter.com/home?lang=fr">Mon Twitter</a>
-        <a href="https://www.artstation.com/?sort_by=community">Mon ArtStation</a>
         <div class="home__artist__reseaux__twitter">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve" width="512" height="512">
-          <path id="Logo_00000038394049246713568260000012923108920998390947_" d="M21.543,7.104c0.014,0.211,0.014,0.423,0.014,0.636  c0,6.507-4.954,14.01-14.01,14.01v-0.004C4.872,21.75,2.252,20.984,0,19.539c0.389,0.047,0.78,0.07,1.172,0.071  c2.218,0.002,4.372-0.742,6.115-2.112c-2.107-0.04-3.955-1.414-4.6-3.42c0.738,0.142,1.498,0.113,2.223-0.084  c-2.298-0.464-3.95-2.483-3.95-4.827c0-0.021,0-0.042,0-0.062c0.685,0.382,1.451,0.593,2.235,0.616  C1.031,8.276,0.363,5.398,1.67,3.148c2.5,3.076,6.189,4.946,10.148,5.145c-0.397-1.71,0.146-3.502,1.424-4.705  c1.983-1.865,5.102-1.769,6.967,0.214c1.103-0.217,2.16-0.622,3.127-1.195c-0.368,1.14-1.137,2.108-2.165,2.724  C22.148,5.214,23.101,4.953,24,4.555C23.339,5.544,22.507,6.407,21.543,7.104z"/></svg>
+          <a href="https://twitter.com/home?lang=fr">Mon Twitter</a>
+          <svg class="home__artist__reseaux__twitter__icone" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve" width="512" height="512">
+            <path id="Logo_00000038394049246713568260000012923108920998390947_" d="M21.543,7.104c0.014,0.211,0.014,0.423,0.014,0.636  c0,6.507-4.954,14.01-14.01,14.01v-0.004C4.872,21.75,2.252,20.984,0,19.539c0.389,0.047,0.78,0.07,1.172,0.071  c2.218,0.002,4.372-0.742,6.115-2.112c-2.107-0.04-3.955-1.414-4.6-3.42c0.738,0.142,1.498,0.113,2.223-0.084  c-2.298-0.464-3.95-2.483-3.95-4.827c0-0.021,0-0.042,0-0.062c0.685,0.382,1.451,0.593,2.235,0.616  C1.031,8.276,0.363,5.398,1.67,3.148c2.5,3.076,6.189,4.946,10.148,5.145c-0.397-1.71,0.146-3.502,1.424-4.705  c1.983-1.865,5.102-1.769,6.967,0.214c1.103-0.217,2.16-0.622,3.127-1.195c-0.368,1.14-1.137,2.108-2.165,2.724  C22.148,5.214,23.101,4.953,24,4.555C23.339,5.544,22.507,6.407,21.543,7.104z"/>
+          </svg>
         </div>
         <div class="home__artist__reseaux__instagram">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve" width="512" height="512">
+          <a href="https://www.instagram.com/?hl=fr">Mon Instagram</a>
+          <svg class="home__artist__reseaux__instagram__icone" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve" width="512" height="512">
             <g>
-	            <path d="M12,2.162c3.204,0,3.584,0.012,4.849,0.07c1.308,0.06,2.655,0.358,3.608,1.311c0.962,0.962,1.251,2.296,1.311,3.608   c0.058,1.265,0.07,1.645,0.07,4.849c0,3.204-0.012,3.584-0.07,4.849c-0.059,1.301-0.364,2.661-1.311,3.608   c-0.962,0.962-2.295,1.251-3.608,1.311c-1.265,0.058-1.645,0.07-4.849,0.07s-3.584-0.012-4.849-0.07   c-1.291-0.059-2.669-0.371-3.608-1.311c-0.957-0.957-1.251-2.304-1.311-3.608c-0.058-1.265-0.07-1.645-0.07-4.849   c0-3.204,0.012-3.584,0.07-4.849c0.059-1.296,0.367-2.664,1.311-3.608c0.96-0.96,2.299-1.251,3.608-1.311   C8.416,2.174,8.796,2.162,12,2.162 M12,0C8.741,0,8.332,0.014,7.052,0.072C5.197,0.157,3.355,0.673,2.014,2.014   C0.668,3.36,0.157,5.198,0.072,7.052C0.014,8.332,0,8.741,0,12c0,3.259,0.014,3.668,0.072,4.948c0.085,1.853,0.603,3.7,1.942,5.038   c1.345,1.345,3.186,1.857,5.038,1.942C8.332,23.986,8.741,24,12,24c3.259,0,3.668-0.014,4.948-0.072   c1.854-0.085,3.698-0.602,5.038-1.942c1.347-1.347,1.857-3.184,1.942-5.038C23.986,15.668,24,15.259,24,12   c0-3.259-0.014-3.668-0.072-4.948c-0.085-1.855-0.602-3.698-1.942-5.038c-1.343-1.343-3.189-1.858-5.038-1.942   C15.668,0.014,15.259,0,12,0z"/>
-	            <path d="M12,5.838c-3.403,0-6.162,2.759-6.162,6.162c0,3.403,2.759,6.162,6.162,6.162s6.162-2.759,6.162-6.162   C18.162,8.597,15.403,5.838,12,5.838z M12,16c-2.209,0-4-1.791-4-4s1.791-4,4-4s4,1.791,4,4S14.209,16,12,16z"/>
-	            <circle cx="18.406" cy="5.594" r="1.44"/>
+              <path d="M12,2.162c3.204,0,3.584,0.012,4.849,0.07c1.308,0.06,2.655,0.358,3.608,1.311c0.962,0.962,1.251,2.296,1.311,3.608   c0.058,1.265,0.07,1.645,0.07,4.849c0,3.204-0.012,3.584-0.07,4.849c-0.059,1.301-0.364,2.661-1.311,3.608   c-0.962,0.962-2.295,1.251-3.608,1.311c-1.265,0.058-1.645,0.07-4.849,0.07s-3.584-0.012-4.849-0.07   c-1.291-0.059-2.669-0.371-3.608-1.311c-0.957-0.957-1.251-2.304-1.311-3.608c-0.058-1.265-0.07-1.645-0.07-4.849   c0-3.204,0.012-3.584,0.07-4.849c0.059-1.296,0.367-2.664,1.311-3.608c0.96-0.96,2.299-1.251,3.608-1.311   C8.416,2.174,8.796,2.162,12,2.162 M12,0C8.741,0,8.332,0.014,7.052,0.072C5.197,0.157,3.355,0.673,2.014,2.014   C0.668,3.36,0.157,5.198,0.072,7.052C0.014,8.332,0,8.741,0,12c0,3.259,0.014,3.668,0.072,4.948c0.085,1.853,0.603,3.7,1.942,5.038   c1.345,1.345,3.186,1.857,5.038,1.942C8.332,23.986,8.741,24,12,24c3.259,0,3.668-0.014,4.948-0.072   c1.854-0.085,3.698-0.602,5.038-1.942c1.347-1.347,1.857-3.184,1.942-5.038C23.986,15.668,24,15.259,24,12   c0-3.259-0.014-3.668-0.072-4.948c-0.085-1.855-0.602-3.698-1.942-5.038c-1.343-1.343-3.189-1.858-5.038-1.942   C15.668,0.014,15.259,0,12,0z"/>
+              <path d="M12,5.838c-3.403,0-6.162,2.759-6.162,6.162c0,3.403,2.759,6.162,6.162,6.162s6.162-2.759,6.162-6.162   C18.162,8.597,15.403,5.838,12,5.838z M12,16c-2.209,0-4-1.791-4-4s1.791-4,4-4s4,1.791,4,4S14.209,16,12,16z"/>
+              <circle cx="18.406" cy="5.594" r="1.44"/>
             </g>
           </svg>
         </div>
         <div class="home__artist__reseaux__artstation">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve" width="512" height="512">
+          <a href="https://www.artstation.com/?sort_by=community">Mon ArtStation</a>
+          <svg class="home__artist__reseaux__artstation__icone" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve" width="512" height="512">
             <g>
-	            <path d="M0,17.725l2.031,3.504l0,0c0.396,0.793,1.222,1.335,2.169,1.335l0,0l0,0h13.457l-2.792-4.839H0z"/>
-	            <path d="M24,17.749c0-0.485-0.146-0.939-0.388-1.311L15.73,2.723c-0.405-0.769-1.214-1.287-2.144-1.287H9.419l12.178,21.103   l1.918-3.326C23.903,18.575,24,18.299,24,17.749z"/>
-	            <polygon points="12.874,14.286 7.428,4.851 1.982,14.286  "/>
+              <path d="M0,17.725l2.031,3.504l0,0c0.396,0.793,1.222,1.335,2.169,1.335l0,0l0,0h13.457l-2.792-4.839H0z"/>
+              <path d="M24,17.749c0-0.485-0.146-0.939-0.388-1.311L15.73,2.723c-0.405-0.769-1.214-1.287-2.144-1.287H9.419l12.178,21.103   l1.918-3.326C23.903,18.575,24,18.299,24,17.749z"/>
+              <polygon points="12.874,14.286 7.428,4.851 1.982,14.286  "/>
             </g>
           </svg>
         </div>
         <div class="home__artist__reseaux__facebook">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve" width="512" height="512">
+          <a href="https://www.facebook.com/">Mon Facebook</a>
+          <svg class="home__artist__reseaux__facebook__icone" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve" width="512" height="512">
             <g>
-	            <path d="M24,12.073c0,5.989-4.394,10.954-10.13,11.855v-8.363h2.789l0.531-3.46H13.87V9.86c0-0.947,0.464-1.869,1.95-1.869h1.509   V5.045c0,0-1.37-0.234-2.679-0.234c-2.734,0-4.52,1.657-4.52,4.656v2.637H7.091v3.46h3.039v8.363C4.395,23.025,0,18.061,0,12.073   c0-6.627,5.373-12,12-12S24,5.445,24,12.073z"/>
+              <path d="M24,12.073c0,5.989-4.394,10.954-10.13,11.855v-8.363h2.789l0.531-3.46H13.87V9.86c0-0.947,0.464-1.869,1.95-1.869h1.509   V5.045c0,0-1.37-0.234-2.679-0.234c-2.734,0-4.52,1.657-4.52,4.656v2.637H7.091v3.46h3.039v8.363C4.395,23.025,0,18.061,0,12.073   c0-6.627,5.373-12,12-12S24,5.445,24,12.073z"/>
             </g>
           </svg>
         </div>
@@ -48,14 +48,62 @@
     </div>
     <div class="home__gallery">
       <div class="home__gallery__images">
-        <img :src="image1.url"/>
+        <img class="flex md:flex-row flex-col gap-14 md:gap-24 snap-x overflow-auto border-4 border-neutral-800 shadow-thick rounded-3xl" :src="image1.url"/>
       </div>
       <div class="home__gallery__acces">
         <a href="/illustration" class="link">
           <span class="mask">
             <div class="link-container">
-              <span class="link-title1 title">Accéder à la gallerie de notre Artiste</span>
-              <span class="link-title2 title">Accéder à la gallerie de notre Artiste</span>
+              <span class="link-title1 title">Accéder à la gallerie</span>
+              <span class="link-title2 title">Accéder à la gallerie</span>
+            </div>
+          </span>
+          <div class="link-icon">
+            <svg class="icon" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+              <path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z" />
+            </svg>
+            <svg class="icon" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+              <path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z" />
+            </svg>
+          </div>
+        </a>
+        <a href="/enchere" class="link">
+          <span class="mask">
+            <div class="link-container">
+              <span class="link-title1 title">Accéder aux enchères</span>
+              <span class="link-title2 title">Accéder aux enchères</span>
+            </div>
+          </span>
+          <div class="link-icon">
+            <svg class="icon" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+              <path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z" />
+            </svg>
+            <svg class="icon" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+              <path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z" />
+            </svg>
+          </div>
+        </a>
+        <a href="/form" class="link">
+          <span class="mask">
+            <div class="link-container">
+              <span class="link-title1 title">Intéressé par le concept ?</span>
+              <span class="link-title2 title">Intéressé par le concept ?</span>
+            </div>
+          </span>
+          <div class="link-icon">
+            <svg class="icon" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+              <path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z" />
+            </svg>
+            <svg class="icon" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+              <path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z" />
+            </svg>
+          </div>
+        </a>
+        <a href="/about" class="link">
+          <span class="mask">
+            <div class="link-container">
+              <span class="link-title1 title">Qui sommes-nous ?</span>
+              <span class="link-title2 title">Qui sommes-nous ?</span>
             </div>
           </span>
           <div class="link-icon">
@@ -69,7 +117,7 @@
         </a>
       </div>
       <div class="home__gallery__images">
-        <img :src="image2.url"/>
+        <img class="flex md:flex-row flex-col gap-14 md:gap-24 snap-x overflow-auto border-4 border-neutral-800 shadow-thick rounded-3xl" :src="image2.url"/>
       </div>
     </div>
     <div class="home__support">
@@ -153,7 +201,8 @@ export default {
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 100%;
+  height: 50%;
+  max-height: 300px;
   padding: 0 20px;
 }
 .home__artist__image {
@@ -165,11 +214,12 @@ export default {
   max-width: 600px;
   max-height: 400px;
   margin-top: 40px;
+  padding : 10px 20px;
 }
 .home__artist__image img {
-  width: 50%;
-  height: 50%;
-  object-fit: cover;
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
 }
 .home__artist__description {
   width: 100%;
@@ -182,6 +232,7 @@ export default {
 }
 .home__artist__description h1 {
   font-size: 2rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   margin-bottom: 10px;
   margin-top: 30px;
 }
@@ -196,47 +247,60 @@ export default {
   margin-left: 0px;
   max-width: 600px;
   max-height: 400px;
+  padding : 30px 0;
 }
 .home__artist__reseaux a {
   font-size: 20px;
+  font-family: Georgia, Times, 'Times New Roman', serif;
   margin-top: 20px;
   margin-left: 100px;
 }
 .home__artist__reseaux a:hover {
-  color: rgb(77, 76, 76);
+  color: #86198f;
 }
-
 .home__artist__reseaux__instagram {
   display: flex;
-  width: 2%;
-  height: 2%;
-  position: absolute;
-  top: -60px;
-  right: 250px;
+  flex-direction: row;
+}
+.home__artist__reseaux__instagram__icone {
+  display: flex;
+  max-width: 35px;
+  max-height: 35px;
+  margin-left: 5%;
+  margin-top: 4%;
 }
 .home__artist__reseaux__facebook {
   display: flex;
-  width: 2%;
-  height: 2%;
-  position: absolute;
-  top: -12px;
-  right: 250px;
+  flex-direction: row;
+}
+.home__artist__reseaux__facebook__icone {
+  display: flex;
+  max-width: 35px;
+  max-height: 35px;
+  margin-left: 5%;
+  margin-top: 4%;
 }
 .home__artist__reseaux__twitter {
   display: flex;
-  width: 2%;
-  height: 2%;
-  position: absolute;
-  top: 38px;
-  right: 275px;
+  flex-direction: row;
+}
+.home__artist__reseaux__twitter__icone {
+  display: flex;
+  max-width: 35px;
+  max-height: 35px;
+  margin-left: 5%;
+  margin-top: 4%;
 }
 .home__artist__reseaux__artstation {
   display: flex;
-  width: 2%;
-  height: 2%;
-  position: absolute;
-  top: 90px;
-  right: 250px;
+  flex-direction: row;
+}
+.home__artist__reseaux__artstation__icone {
+  display: flex;
+  max-width: 35px;
+  max-height: 35px;
+  margin-left: 5%;
+  margin-top: 4%;
 }
 .home__gallery {
   display: flex;
@@ -245,19 +309,21 @@ export default {
   margin-bottom: 20px;
 }
 .home__gallery__acces {
+  
   width: 100%;
   height: 100%;
   text-align: center;
   max-width: 600px;
   max-height: 400px;
   color: rgb(3, 3, 3);
-  margin-top: 100px;
+  margin-top: 4%;
 }
 .home__gallery__acces a {
   font-family: "Quicksand", sans-serif;
   text-transform: uppercase;
   font-size: 1rem;
-  margin-left: 20px;
+  justify-content: center;
+  margin-bottom: 10%;
   cursor: pointer;
 }
 .home__gallery__images {
@@ -270,8 +336,8 @@ export default {
   height: 100%;
 }
 .home__gallery__images img {
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
   object-fit: cover;
 }
 
@@ -372,6 +438,7 @@ export default {
   text-transform: uppercase;
   font-size: 1rem;
   text-align: center;
+  margin-top: -5%;
 }
 .home__support__text p{
   text-align: center;
