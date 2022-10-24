@@ -53,7 +53,7 @@
 
   <div class="px-10 pt-8 mt-20 pb-5 mb-3 grid-cols-1 gap-5 max-w-s w-full rounded-xl w-full bg-white shadow-lg">
     <div class="mb-4 flex h-12 w-12 flex flex-col items-center justify-center rounded-full border border-100"><img src="../assets/member.png" class="max-w-sm h-9 w-9" alt=""></div>
-    <div class="block text-gray-700 text-base font-semibold">Contactez-nous ici (efrei.graphill@gmail.com) :</div>
+    <div class="block text-gray-700 text-base font-semibold">Contactez-nous ici (graphill.efrei@gmail.com) :</div>
     <form v-on:submit.prevent="onSubmit"><br />
         <select class="mb-6 shadow apprearance-none border rounded w-full py-3 px-3 text-gray-500 text-black leading-tight focus:outline-none focus:shadow-outline" name='genre' v-model="genre" placeholder="genre" required>
           <option value="Madame">Madame</option>
@@ -89,9 +89,9 @@ export default {
   methods: {
       onSubmit(){
           var emailData = {
-              service_id: 'service_bjyjicy',
-              template_id: 'template_x9ctxin',
-              public_key: 'mYDFRnd_mFESSuUPi',
+              service_id: 'service_y0ttors',
+              template_id: 'template_mhmqb3s',
+              public_key: 'IjkwnJhq__n82EB-v',
               templateParams:{
                   firstname: this.firstname,
                   lastname: this.lastname,
