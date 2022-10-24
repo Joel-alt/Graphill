@@ -3,11 +3,11 @@
   <div class="home">
     <div class="home__artist">
       <div class="home__artist__image">
-        <img class="flex md:flex-row flex-col gap-14 md:gap-24 snap-x overflow-auto border-4 border-neutral-800 shadow-thick rounded-3xl" :src="artist.artistImage" alt="photo de l'artiste" />
+        <img class="border-4 border-neutral-800 shadow-thick rounded-3xl" :src="artist.artistImage" alt="photo de l'artiste" />
       </div>
       <div class="home__artist__description">
         <h1>{{ artist.artistName }}</h1>
-        <p>{{ artist.description }}</p>
+        <p class="text-gray-700 text-lg leading-7">{{ artist.description }}</p>
       </div>
       <div class="home__artist__reseaux">
         <div class="home__artist__reseaux__twitter">
@@ -236,9 +236,6 @@ export default {
   margin-bottom: 10px;
   margin-top: 30px;
 }
-.home__artist__description p {
-  font-size: 1rem;
-}
 .home__artist__reseaux {
   display: flex;
   flex-direction: column;
@@ -251,12 +248,11 @@ export default {
 }
 .home__artist__reseaux a {
   font-size: 20px;
-  font-family: Georgia, Times, 'Times New Roman', serif;
   margin-top: 20px;
   margin-left: 100px;
 }
 .home__artist__reseaux a:hover {
-  color: #86198f;
+  color: #8f1dfd;
 }
 .home__artist__reseaux__instagram {
   display: flex;
@@ -443,6 +439,7 @@ export default {
 .home__support__text p{
   text-align: center;
   font-family: "Quicksand", sans-serif;
+  margin: 1rem 0;
 }
 
 .home__support__text a{

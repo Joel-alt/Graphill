@@ -10,7 +10,7 @@
         <br>
         <button class="button" v-if="password === '' || username===''" disabled>Valider</button>
         <button v-else class="button" @submit.prevent="onSubmit">Valider</button>
-        <div class="text">Vous n'avez pas de compte ?<RouterLink class="text-fuchsia-800" to="/signup"> En créer un !</RouterLink></div>
+        <div class="text">Vous n'avez pas de compte ?<RouterLink class="text-violet-700" to="/signup"> En créer un !</RouterLink></div>
         <div class="text-red-500" v-if="error">{{error}}</div>
       </form>
     </div>
@@ -80,11 +80,8 @@ export default {
     box-sizing: border-box;
 }
 
-label{
-  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
-}
 .text{
-  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+
   text-align: center;
   padding-top: 10px;
 }
@@ -109,5 +106,10 @@ label{
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+}
+
+.button:active {
+    box-shadow: #422800 2px 2px 0 0;
+    transform: translate(2px, 2px);
 }
 </style>

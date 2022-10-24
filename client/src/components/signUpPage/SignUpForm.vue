@@ -73,9 +73,7 @@ export default {
     margin: 8px 0;
     box-sizing: border-box;
 }
-label{
-  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
-}
+
 .button {
     display: flex;
     margin: 1rem;
@@ -97,5 +95,10 @@ label{
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+}
+
+.button:active {
+    box-shadow: #422800 2px 2px 0 0;
+    transform: translate(2px, 2px);
 }
 </style>

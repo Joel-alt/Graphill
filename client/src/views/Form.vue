@@ -3,7 +3,7 @@
         <form v-if="isConnected" v-on:submit.prevent="onSubmit" class="form"><br />
             <h1
                 class="m-4 text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-fuchsia-500">
-                Formulaire</h1>
+                Demande de devis</h1>
             <div class="mb-6 block text-gray-500 text-lg">Veuillez remplir ce formulaire pour
                 demander un devis
             </div>
@@ -36,7 +36,7 @@
             <div class="blur">
                 <h1
                     class="m-4 text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500">
-                    Formulaire</h1>
+                    Demande de devis</h1>
                 <div class="mb-6 block blur-md text-gray-500 text-lg">Veuillez remplir ce formulaire pour
                     demander un devis
                 </div>
