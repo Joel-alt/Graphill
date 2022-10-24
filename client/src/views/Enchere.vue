@@ -340,4 +340,9 @@ export default {
     -webkit-user-select: none;
     touch-action: manipulation;
 }
+
+.enchere__body__form__content__button:active {
+    box-shadow: #422800 2px 2px 0 0;
+    transform: translate(2px, 2px);
+}
 </style>
