@@ -63,7 +63,12 @@
         <input class="mb-6 shadow apprearance-none border rounded w-full py-3 px-3  text-black leading-tight focus:outline-none focus:shadow-outline" type="text" name="firstname" v-model="firstname" placeholder="Prénom" required/> <br />
         <input class="mb-6 shadow apprearance-none border rounded w-full py-3 px-3  text-black leading-tight focus:outline-none focus:shadow-outline" type="email" name="email" v-model="email" placeholder="Email" required/> <br />
         <textarea class="mb-6 h-100 shadow apprearance-none border rounded w-full py-3 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" type="text" name="message" v-model="message" placeholder="Message" required/> <br />
-        <button class="submit" @submit.prevent="onSubmit"> Envoyer </button> 
+        <button class="submit" @submit.prevent="onSubmit"> 
+          <div class="flex items-center">
+            <p>Envoyer</p>
+            <img src="@/assets/send-48.png" class="w-6 h-6 ml-3">
+          </div>
+        </button> 
     </form>
   </div>
  
@@ -122,7 +127,7 @@ export default {
 
 <style scoped>
 .submit {
-    margin: 1rem;
+    margin: 1rem 0;
     border: 2px solid #242324;
     border-radius: 1.5rem;
     box-shadow: #242423 4px 4px 0 0;
