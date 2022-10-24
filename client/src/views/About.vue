@@ -67,15 +67,18 @@
     </form>
   </div>
  
+  <Modal v-show="showModal" @close-modal="showModal = false"/>
 </div>
 </template>
 
 <script>
 import emailjs from '@emailjs/browser';
+import Modal from '@/components/submit/Modal.vue'
 
 export default {
   name: 'AboutView',
   components: {
+    Modal,
   },
   data(){
       return {
@@ -84,6 +87,7 @@ export default {
           email: '',
           message: '',
           genre: '',
+          showModal: false,
       }
   },
   methods: {
@@ -104,12 +108,13 @@ export default {
           .then((result)=>{
               console.log('success!', result.text);
           }, (error) => {console.log('failed...', error.text);});
-          alert("Bonjour, " + this.genre + " " + this.firstname + " " + this.lastname + ". Votre message a été reçu par l'équipe Graphill et vous aurez la réponse d'ici quelques jours. Merci !")
+          //alert("Bonjour, " + this.genre + " " + this.firstname + " " + this.lastname + ". Votre message a été reçu par l'équipe Graphill et vous aurez la réponse d'ici quelques jours. Merci !")
           this.lastname = ''
           this.firstname = ''
           this.email = ''
           this.message = ''
           this.genre = ''
+          this.showModal = true
       },
   }
 }
