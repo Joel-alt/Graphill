@@ -12,8 +12,8 @@
           <router-link v-if="username===null" to="/login" class="userbutton">Se connecter
           </router-link>
           <div @mouseover="onDeconnexion = true" @mouseleave="onDeconnexion = false" @click="onDeconnexion = false">
-            <div v-if="username!==null && onDeconnexion===false" class="userbutton flex items-center">
-              {{username}}
+            <div v-if="username!==null && onDeconnexion===false" class="userbutton flex items-center justify-around">
+              <p>{{username}}</p>
               <img src="@/assets/user-60.png" class="w-5 h-5 ml-5" />
             </div>
             <div v-if="username!==null && onDeconnexion===true" @click="deconnexion" class="userbutton">Se déconnecter
