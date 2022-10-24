@@ -30,6 +30,9 @@
                 </div>
             </button>
         </form>
+        
+        <Modal v-show="showModal" @close-modal="showModal = false"/>
+        
         <div v-else class="form z-0" id="container">
             <img class="rounded-xl md:max-w-md hover z-10">
             <a class="connect z-10" href="/login">Connect to submit the form 👀</a>
@@ -59,9 +62,13 @@
 
 <script>
 import emailjs from '@emailjs/browser';
+import Modal from '@/components/submit/Modal.vue'
 
 export default {
     name: 'FormView',
+    components: {
+      Modal,
+    },
     data() {
         return {
             lastname: '',
@@ -70,6 +77,7 @@ export default {
             email: '',
             hostingTime: '',
             isConnected: false,
+            showModal: false,
         }
     },
     methods: {
@@ -100,12 +108,13 @@ export default {
               };
               emailjs.send(emailData.service_id,emailData.template_id,emailData.templateParams,emailData.public_key)
               .then((result)=>{console.log('success!', result.text);}, (error) => {console.log('failed...', error.text);});
-                  alert("Bonjour, " + this.firstname + " " + this.lastname + ". Votre demande a été prise en compte et vous aurez le devis d'ici quelques jours. Merci !")
+                  //alert("Bonjour, " + this.firstname + " " + this.lastname + ". Votre demande a été prise en compte et vous aurez le devis d'ici quelques jours. Merci !")
                   this.lastname = ''
                   this.firstname = ''
                   this.artistname = ''
                   this.email = ''
                   this.hostingTime = ''
+                  this.showModal = true
               }
           })
         },
