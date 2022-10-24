@@ -23,7 +23,7 @@
                     <!--Classe les participants dans l'ordre du meilleur prix-->
                     <div v-for="bid in bids" :key="bid.price" class="enchere__body__bids__list__bid">
                         <p class="enchere__body__bids__list__bid__user">{{ bid.username }}</p>
-                        <p class="enchere__body__bids__list__bid__price">{{ bid.price }}</p> 
+                        <p class="enchere__body__bids__list__bid__price">{{ bid.price }} $</p> 
                     </div>
                 </div>
              </div>
@@ -36,7 +36,7 @@
                     <form>
                         <div class="enchere__body__form__content__input">
                             <label class="mr-3 text-lg" for="price">Prix</label>
-                            <input type="number" id="price" v-model="price" />
+                            <input type="number" id="price" v-model="price"/>
                         </div>
                         <div class="enchere__body__form__content__button">
                             <button @click="addBid" type="submit">Ajouter</button>
@@ -142,14 +142,14 @@ export default {
     text-transform: uppercase;
     width: 50%;
     height: 50px;
-    color: rgb(5, 4, 4);
-    padding: 0 20px;
+    color: rgb(0, 0, 0);
+    padding: 0 1rem;
+    margin: 2rem 0;
 }
 
 .enchere__body {
     display: flex;
     justify-content: space-around;
-    align-items: center;
     width: 100%;
     height: 100%;
     padding: 0 20px;
@@ -199,7 +199,7 @@ export default {
     align-items: center;
     width: 50%;
     height: 90%;
-    border: 6px solid #333;
+    border: 4px solid #333;
     border-radius: 50px;
     color: #333;
     padding: 0 20px;
@@ -228,13 +228,12 @@ export default {
 
 .enchere__body__bids__list__bid {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 50px;
     color: #333;
-    padding: 0 20px;
+
 }
 
 .enchere__body__bids__list__bid__user {
@@ -274,7 +273,7 @@ export default {
     width: 100%;
     height: 60px;
     color: #333;
-    font:  bold 20px/1 sans-serif;
+    font:  bold 24px/1 sans-serif;
     padding: 0 20px 10px;
 }
 .enchere__body__form__content {
@@ -290,9 +289,14 @@ export default {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 50px;
     color: #333;
-    padding: 0 20px;
+    padding: 1rem;
+    height: 70%;
+    background-color: #ffffff;
+    border: 2px solid #333;
+    box-shadow: #242423 4px 4px 0 0;
+    border-radius: 1rem;
+
 }
 
 .enchere__body__form__content__input input {
@@ -308,7 +312,8 @@ export default {
     width: 50%;
     height: 100%;
     margin-left: 51px;
-    border-color: #333;
+    border-color: #8f1dfd;
+    border-radius: 0.75rem;
     color: #333;
     padding: 0 20px;
 }
